@@ -1,0 +1,663 @@
+<div>
+
+<h1>Bitcoin Powered By Chaumian eCash</h1>
+
+<p>INTRODUCTION</p>
+
+<p>In this episode of Citadel Dispatch (<a href="https://www.youtube.com/watch?v=RvxSmnxcyQA">CD120: BITCOIN POWERED CHAUMIAN ECASH WITH CALLE</a>), Matt Odell delves into the world of Bitcoin privacy, and the revolutionary potential of Chaumian eCash with guest,&nbsp;<a href="https://github.com/callebtc">Calle</a>. Amidst the backdrop of a tech landscape dominated by surveillance and control, this discussion shines a light on the principles of freedom and sovereignty that Bitcoin embodies. Calle, bringing a wealth of knowledge and a passion for decentralized technologies, unpacks the history, mechanics, and future possibilities of Chaumian eCash — a system that stands as a testament to Bitcoin's foundational ethos of empowering individuals.</p>
+
+<p>The conversation discusses the origins of eCash, conceptualized by cryptographer&nbsp;<a href="https://chaum.com/">David Chaum</a>&nbsp;in the early 1980s, and its evolution into a tool that could redefine privacy and security in digital transactions. Calle's insights into the technical intricacies of Chaumian eCash, combined with examples and visions for its application, illustrate a future where financial transactions are secure, private, and user-controlled.</p>
+
+<p>Odell and Calle also touch upon the broader implications of such technologies for the Bitcoin ecosystem and the challenges of navigating a world where the tension between innovation and regulation persists. Through their discussion, you're invited to contemplate the significance of reclaiming privacy and autonomy in the digital age, making this episode important for anyone interested in the intersections of technology, freedom, and finance.</p>
+
+<p>ODELL:</p>
+
+<p>Happy Bitcoin Monday, freaks! I'm your host Odell for another Citadel Dispatch, the interactive live show focused on actual Bitcoin and freedom tech discussion. We have a great chat lined up today. It has absolutely nothing to do with the Fox Business clip that I started the show off with, but Dylan's our boy, and the corporate media clips were lacking this week. I've got Calle in the house to talk about Chaumian eCash. How's it going, Calle?</p>
+
+<p>CALLE:</p>
+
+<p>Hey, yo, what's up, Odell? Thanks for having me. Looking forward to this.</p>
+
+<p>ODELL:</p>
+
+<p>Do you have any opinions on Michael Saylor cornering the market?</p>
+
+<p>CALLE:</p>
+
+<p>Well, I'm not too happy about it as a Bitcoin user myself because I would like to have his Bitcoin, but other than that, I don't really give a damn about that now. Bitcoin was designed for me not to have to give a damn about that, so I don't.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, if we had to like every Bitcoiner, it would kind of defeat the whole purpose.</p>
+
+<p>CALLE:</p>
+
+<p>Agreed. Yes.</p>
+
+<p>ODELL:</p>
+
+<p>I would say, though, I think&nbsp;<a href="https://dylanleclair.info/">Dylan LeClair's</a>&nbsp;answer was a long-winded way of saying that if you're going to corner something, it's better to corner Bitcoin than silver.</p>
+
+<p>CALLE:</p>
+
+<p>Well, yeah, these are different ways of expressing that you can't print more than 21 million Bitcoin.</p>
+
+<p>ODELL:</p>
+
+<p>Exactly. I feel like we're all just the humble stackers out there, kind of trying to do our part to reduce supply and increase adoption. Let's talk about&nbsp;<a href="https://bitlyrics.co/transcripts/cashu-for-bitcoin/">Chaumian eCash</a>. We're not here to talk about markets, I guess. So, Chaumian eCash. What is Chaumian eCash? Why are you excited about it? Why should we be excited about it? Why should the freaks care?</p>
+
+<p>CALLE:</p>
+
+<p>Okay, so eCash is a technology and it's the world's first or history's first cryptocurrency, basically, and invented a long time ago. We can go over all the history, and then basically, it was forgotten. Then Bitcoin came along, and today we're again interested in Chaumian eCash because we figured that we can build it on top of Bitcoin. That's why we're here today because we have exciting developments in our ecosystem, and we're building the coolest eCash systems that ever existed on top of the best money that ever existed.</p>
+
+<p>ODELL:</p>
+
+<p>Let's fucking go!</p>
+
+<p>CALLE:</p>
+
+<p>Okay, so let's start with the history part because that explains why Chaumian eCash is so interesting and why it failed and why it has this second Renaissance basically today. The story starts in 1982 with genius cryptographer David Chaum. This guy comes up with a technique called Blind signatures, which is a way to give a signature on a document that you don't see, and then later when the document is presented to you, you can recognize your signature.</p>
+
+<p>Well, that is a very general cryptographic instrument, but he very soon noticed that if you use blind signatures in a clever way, you can actually build electronic money systems with that so that you can pay for stuff online while also preserving almost perfect privacy for the payer and the payee. This is all in 1982, and he comes up with this idea. Just to put that into context, this is literally decades before the internet became really a consumer thing. So already in '82, he was very forward-thinking and knew that most of our lives will be online at some point, and we will be paying for stuff online and leaving traces. So he comes up with the idea of eCash, based on blind signatures. That's his seminal work in '82.</p>
+
+<p>So, how does eCash work? What is it? We can use the classic physical example for those who don't know, who can't imagine how this works electronically. With eCash, you can basically build a bank that doesn't know how much money everyone has and who's transacting with who. The way this is done is via these blind signatures. In this toy model, you write a contract on a piece of paper, saying this piece of paper is worth $1,000, and you put that contract into an envelope made out of carbon paper. Now, with eCash, you can basically build a bank that doesn't know how much money everyone has and who's transacting with who. The way this is done is via these blind signatures. In this toy model, you write a contract on a piece of paper, saying this piece of paper is worth $1,000, and you put that contract into an envelope made out of carbon paper.</p>
+
+<p>Now, the bank receives this letter and doesn't open it but knows that you want a signature on that contract worth $1,000. You send $1,000 to the bank, and now the bank, without opening the envelope, takes a pen and signs the envelope from the outside and sends you back this envelope. You open the envelope again, and what you see is the contract that you've written with the signature of the bank on it, which says this contract is worth $1,000. The nice thing about it is that the bank has never seen this contract before, so there's a signature, but it has never seen the contract before.</p>
+
+<p>This enables you that when you now take this contract and go back to the bank, let's say a day later where you want to withdraw your money again, you can go back to the bank and present them the contract that they have given you. But since they have never seen the contract before, they don't know that you are the person who deposited the $1,000 a day before. Now, if you're the only user, obviously, it's very clear that you're the only person coming back again. But if you have thousands of users using the service, the anonymity set becomes so large that all the users of the service get almost perfect privacy in exchanging these paper tokens.</p>
+
+<p>This is how you can imagine eCash in an electronic form. Now, we don't do it with paper; we do it with cryptography, and the envelope is not made out of carbon paper but it's<a href="https://en.wikipedia.org/wiki/Elliptic-curve_cryptography">&nbsp;elliptic curve cryptography</a>, and you put a signature on it and so forth, but the mechanism is kind of the same. In an electronic eCash system, you send the service provider, let's say Bitcoin, and this is the Chaumian Mint. You send the Mint some Bitcoin, and the Mint then gives you a blind signature on eCash, sends you back the eCash, and now you hold the right to withdraw that Bitcoin again at a later point. In a sense, Chaumian eCash tokens are little pieces of IOUs, but they are blinded and cannot be correlated to the events when they were deposited and withdrawn from the Mint. That's what gives this whole system perfect privacy.</p>
+
+<p>Now, we understand how eCash works, the basics. David Chaum invented all this in the early '80s, and everyone was super interested in this. You can dig through the history and find that there was Deutsche Bank and Credit Suisse who wanted a piece of this technology. Microsoft literally wanted to put an eCash wallet into every Windows 98 installation they were going to ship. So, it looked really bright; the future of online payment looked really bright in the beginning of the '90s because the best kid on the block was Chaumian eCash, and it looked like everyone was going to implement that. But we all know that this never happened.</p>
+
+<p>When you look through what people say why this all failed, it often boils down to some operational problems of the company managing this. This was called DigiCash, and it was by David Chaum, and all these deals that I mentioned, they existed, but they never went anywhere, unfortunately. I say unfortunately because if DigiCash had succeeded, we would today have a completely different world in which we do online payments. I'm very convinced of that because only after all this stuff failed, we saw PayPal and credit cards and all these digital payment services pop up on the internet.</p>
+
+<p>Today, the online payments world is complete garbage. You identify yourself for everything you do, and it's completely traceable. All of your interactions with these services are fully locked, and they must be locked; this is the way to build these services. All the privacy benefits that eCash would have given the world, unfortunately, never came into being, and Chaumian eCash kind of died out, and people lost interest in the technology in the late '90s and beginning of the 2000s, which was also due to the failure of the company DigiCash.</p>
+
+<p>Going further in Cypherpunk history and the quest for digital cash, there was this whole period where people were experimenting, but no project really was as successful or as promising as eCash before precisely because people were trying to find a decentralized way of making digital money. We all know Satoshi Nakamoto from 2008, this is the second most influential event in the history of cryptocurrency, so the first one is 1982 with David Chaum literally inventing the concept of cryptocurrency way before all the crypto stuff happened later which we called crypto today, and 2008, the invention of Bitcoin with for of Satoshi Nakamoto.</p>
+
+<p>Satoshi did what David Chaum did not achieve back then or no one else achieved back then, which is to make electronic money systems without a central server that manages eCash, basically, that is supposed to prevent double-spending and so forth. The invention of Bitcoin was this renaissance of digital money, and now Bitcoin has established itself as the main internet currency, the currency of the world.</p>
+
+<p>Around 10 to 12 years after bitcoin's existence, we are seeing the concepts of Chaumian eCash projects again being built anew with a completely new approach.</p>
+
+<p>ODELL:</p>
+
+<p>Nailed it. First, I want to say thank you for your service. A lot of us that have been watching know the early days of this Cashu protocol. You basically put it on your back, carried it uphill for miles and miles, through snow and sleet, to make this a reality. So, we really do appreciate—I think I can speak for all the freaks when I say we appreciate all the work you've done. The way I like to look at it for existing Bitcoiners is, Bitcoiners are very familiar with custodial wallets. Unfortunately, many Bitcoiners choose to use them because of convenience and because it's just easier to interact with Lightning when you're not managing liquidity and channels and whatnot. Chaumian eCash is a way to improve the current custodian model drastically.</p>
+
+<p>It comes with multiple benefits, including privacy. I would say the other big one is offline transactions being possible because they're bearer tokens. And to top this all off, on Calle's history lesson, you know, I think a lot of the failures of DigiCash and Chaumian eCash can be written up to David Chaum's effectiveness as a businessman but also the actual regulatory realities of the day that exist as well, right now, which is that if you have a Chaumian eCash system that is backed by dollars, you ultimately need financial institutions behind you. You need banks that are willing to interact with this thing, interact with this thing that gives people bearer IOUs that they can transact with offline that give them privacy.</p>
+
+<p>And as a result, it was doomed for failure because it required permission from the legacy financial system. While using Bitcoin as the backend for these essentially banks—we call them mints—allows us to do that without permission and without having to specifically ask regulated entities to grant us permission to build this stuff.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, so absolutely. And, I mean, you know, this is as you said, the relation to Bitcoin today. For a Bitcoiner, Chaumian eCash means better custodial systems. This is an interesting topic. Also, you can argue that we should get rid of all the custodians and use Bitcoin completely non-custodial. And I would like to agree with that. It would be best if we could all transact with Bitcoin in a completely non-custodial fashion, but it's not possible as of right now. It won't be possible for the near-term future because Bitcoin just doesn't scale to 8 billion people.</p>
+
+<p>This is a very simple and basic fact to understand about Bitcoin and it's a basic fact, I think, about blockchains in general because they just don't scale. And so the reason why people use custodial systems could be convenience. It's also technical experience and expertise. Running a Lightning node is very hard. It's not like you just install something and you're fine. You have to learn a lot about Lightning, how it works, how channel management works, how liquidity works, what is a forced close, and so on and so forth. All these things, you can learn them. I learned them and many listeners here will have learned them. But if you want to scale this system to a very large degree, which is the rest of the world, then this is never going to happen, at least with Lightning.</p>
+
+<p>I want to say there are also very good examples of non-custodial experiences. I really like how&nbsp;<a href="https://phoenix.acinq.co/">Phoenix</a>&nbsp;works. Phoenix just works. It's a Lightning wallet that just works and it feels a bit like almost as good as a custodial wallet in a sense, as good as&nbsp;<a href="https://www.walletofsatoshi.com/">Wallet of Satoshi</a>&nbsp;in terms of UX, but you pay the price for it. But even if they did everything perfect, we know from just a basic mathematical fact that not every person on the planet will be able to use Phoenix. It just doesn't scale. You cannot open enough Lightning channels.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, I mean, fees would just go crazy, right? Phoenix is an amazing experience until the on-chain fee market is higher and then people are like, why did this transaction cost me so much money?</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, but even if you're willing to pay the insane fees, which would be there if everyone in the world would use Bitcoin, even if you would do that, it still wouldn't be enough. There is not enough block space to open and close a channel for every person once a year. It just doesn't fit in. So, unfortunately, the question is, where do we go with Bitcoin scaling? I believe there will probably be multiple solutions to this. There are ways to scale non-custodial, which are being discussed today. They involve new operation codes, new soft forks, changes to Bitcoin. This could happen, could not happen.</p>
+
+<p>We simply don't know. And we also don't know for 100% sure, whether these solutions will actually scale, whether these changes will enable solutions that scale up to the levels that we need. That's one way to go. Another way to go, or at least another way people go, is they use the custodians. And that's basically my philosophy, even if something that we use is not perfect, there is always a reason to improve it and not completely disregard anything that doesn't fit my perfect standards. With that in mind, you know Bitcoin itself is also not perfect, right? I don't reject Bitcoin because it's not perfect. So, everything that we have today, you know, all the custodians that we have today could be drastically improved if they were eCash custodians. And the reasons for that is, you know, privacy and offline sending and so on and so forth. I think we will be talking about the reasons in more detail today.</p>
+
+<p>ODELL:</p>
+
+<p>I see a question in the chat, and I think this is the first question we should be answering, which is, "What kind of trust is required of the mint when the user is using a&nbsp;<a href="https://www.enuts.cash/">Chaumian eCash wallet</a>? What kind of trust are they putting in the mint?"</p>
+
+<p>CALLE:</p>
+
+<p>Okay, so this is a good question, and it's a very complex question actually, but we'll try to tackle it. So the main trust that you have to have with these systems is always the fast rug risk. The fast rug risk is you have a custodian, could be a Cashu Mint, could be a&nbsp;<a href="https://fedimint.org/">Fedimint&nbsp;</a>Federation, could be Liquid side chain, or whatever, but in all of these systems, you give away your Bitcoin. So the risk is that they can run away with your Bitcoin. That is, I call it the fast rug risk. So you have to trust that the custodian won't run away with your money, and that's the first.</p>
+
+<p>There is also a more nuanced point there, which I call the slow rug risk, which is printing of unbacked IOUs. So it is very hard to verify, often with these systems, that they don't create more liabilities than they have reserves. This is, for example, easy to verify for something like Liquid where you have a public blockchain. But for an eCash system, it's a lot harder to do because of the privacy aspect of the whole system. It is very hard to find out who has how much eCash, not even the mint knows that in particular. So that is the slow rug risk, is printing eCash that is not backed by Bitcoin.</p>
+
+<p>ODELL:</p>
+
+<p>It's undetectable inflation.</p>
+
+<p>CALLE:</p>
+
+<p>Undetectable inflation is a risk; fortunately, there is at least a theoretical way to attack this undetectable inflation risk also in eCash systems. So I've come up with a proof of liability scheme for eCash, which involves a public sharing of the mint's database with the world. You can do that because a Chaumian mint knows so little about its users that it can publish the entire database. So a mint usually operates with a security model in which everything that the mint knows can be known by everyone else except for the private keys, and it won't be a problem for the users. If the mint publishes all its records, there is a way to also prove liabilities up to a certain point for that. Every user's wallet would have to perform some simple checks on these records, but there's also at least a technically feasible way of doing that. But we haven't gotten that far of implementing it; only the basics for that so far.</p>
+
+<p>ODELL:</p>
+
+<p>I guess the left tail of the Bell/IQ curve could be just to routinely run the banks.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, so essentially the main point of this idea is that you automate bank runs, basically. Every mint has a key and does a key rotation, so that's the technical way of saying that the mint opens a new bank, basically. And then what all the wallets do is, as soon as this epoch of one key is over and the new key is started, then you withdraw all your eCash from the old key and move it to the new key of the mint. So basically, automating a bank run, an internal bank run of the mint. By doing that, by automating the bank run, at the end of the day, if you look at the logs that the mint then must publish to gain everyone's confidence, is that you can see that the mint must have printed more liabilities than they have.</p>
+
+<p>If they do, then you can see that. If they don't, then everyone can see that the old bank is now closed, everyone is whole again, and you start with the new one again. And if you do that on an automated and regular fashion, let's say once a month is a realistic timeframe, for example, you can be pretty sure that the mint isn't doing bad things because as long as you keep doing that, the chance of being detected just grows with time, which is a deterrence mechanism for a mint doing nasty stuff.</p>
+
+<p>ODELL:</p>
+
+<p>Right, and I feel like we should add here that the promise of Fedimint is that instead of having a single operator of a mint, the idea is that you'd essentially have a multisig. So you could have three operators and it requires three of them to rug the users or to do silent inflation. Now, that comes with added complexity, which is one of the reasons why the Cashu protocol has been developing so much quicker than Fedimint. But they are interoperable technologies, and it's something to keep in mind.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, absolutely. And it's a good point to note that if you can federate the Bitcoin custody or the operation of the Chaumian mint, then you don't have to put your trust into a single operator but into a quorum of operators, basically not colluding with each other. So there's one more nuanced thing I think we need to explain a little bit more: how eCash works and how the privacy works before I can go into other risks that are also involved and why you have to put certain trust into the mint and certain trust not into the mint. So if you don't mind, we have to complete how an eCash transaction works so that everyone is on the same page.</p>
+
+<p>So, remember before I explained how you get eCash. This was the step where you send Bitcoin to the mint and the mint issues eCash to you, and you basically unpack the eCash from this carbon paper envelope, so to speak, and now you have eCash in your wallet. So, this piece of paper that I explained before, this is the eCash. You can imagine it as a piece of data that is stored on your hard drive. So, this is very important to understand and also quite intriguing, I think, for bitcoiners because most of the systems that we know of, including Bitcoin and all other custodial systems, operate with a ledger. So, the operator of, let's say, PayPal, has a list, a user database, and in this user database there is Odell's account and Calle's account. God forbid we had PayPal accounts, but let's say we do. We all would have accounts, and then when we do a transaction from the account. If want to send you two bucks, then I would call PayPal and say, "Hey, I'm Calle, and I want to send two dollars to Odell." What they do is they subtract an entry from my account and they add an entry to your account.</p>
+
+<p>ODELL:</p>
+
+<p>It's like a big Excel spreadsheet.</p>
+
+<p>CALLE:</p>
+
+<p>Exactly, that's exactly how they keep track of who has what. And this is not only because there are evil people—I guess in the case of PayPal they actually are—but this is just the way how custodial services worked and have worked forever. So, this is how bookkeeping was invented by the Egyptians and so on, so this is the same technology that we're still using for our bank accounts, for example. So, Chaumian eCash works completely differently. Because there is no user database where you have an account, the mint just simply gives you eCash and you store the eCash in your hardware, so in your phone, for example.</p>
+
+<p>If you have a phone wallet, it would be literally stored in the phone, and your balance, so let's say if I would say I have 20,000 satoshis, the fact that I have 20,000 satoshis only means that I have eCash worth 20,000 satoshis on my phone. So, the mint doesn't know my balance, and the mint doesn't know from which payments I got this eCash from, so it doesn't know how I got the eCash, it doesn't know how much eCash I have. And now, let's say I want to send you eCash.</p>
+
+<p>Now, what I would do is I take eCash from my phone's hard drive, so imagine literally a piece of data that I pull from my hard drive, and I send it over to you via a node or a QR code or an email or whatever it is. Everything that can transport data can also transport eCash. So, I send it over to you, and then before the transaction completes, you have to take this eCash and send it to the mint once and receive it back, receive back a fresh token. And you need to do that; otherwise, I would be able to double-spend the same token that I just sent you with someone else.</p>
+
+<p>The role of the mint itself is not to keep track of who has what. The only role of the mint in this case is to make sure that eCash cannot be double-spent, and that's the role of the mint. And this is also, you know, this is the big invention of Satoshi, is he made this system basically in the cloud, so I'm doing that in quotation, so decentralized way of managing this double-spend book. But again, Bitcoin still works in a classical ledger sense, so in Bitcoin, you literally have a database, everyone has that database, the blockchain, where you have entries that say from this pub key to this pub key, you know, send 5,000 satoshi's or 50,000 satoshi's. You still have kind of, I wouldn't say identities, but you know, individual receiver and sender entries in the blockchain, and eCash just turns this upside down. The state of eCash that defines who has what, is not determined by a ledger, but it's determined by who has the eCash in their pocket.</p>
+
+<p>ODELL:</p>
+
+<p>Right, it's a self-custody IOU.</p>
+
+<p>CALLE:</p>
+
+<p>Absolutely, that's the unintuitive and weird part about it. We're not used to custodial systems usually being managed completely centrally. If PayPal doesn't like you, they can press a button and just turn off your money. But with eCash, they cannot turn off your money because they cannot turn off your eCash, I should say, because they hold Bitcoin. I'm saying they, being a bank or a mint, couldn't turn off your eCash because they have never seen it, and it's on your drive, so they cannot take it away from you. And it is the privacy. The fact that I can send you eCash and the mint doesn't know who's transacting with whom also gives you insane privacy. But the privacy also gives you censorship resistance. So, these are two unintuitive facts about eCash that we have to get used to as bitcoiners, or at least I have to get used to: Custodial systems can be, for a fact, censorship-resistant. And in a sense, you know, the IOU can even be non-custodial and can't be taken away from you.</p>
+
+<p>ODELL:</p>
+
+<p>Exactly, it's because there's privacy from the custodian. So when we say censorship resistance, it's because the custodian can't specifically say, "I'm going to stop Odell from transacting." They could stop everyone from transacting, but not just a selected user. The custodian doesn't have insight into individual transactions, so they can't selectively censor users.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, exactly. This is essentially the trust dynamic with the mint. You need to trust that they won't run away with everyone's money collectively, but you don't need to trust them not to run away with your individual funds because they don't have visibility into your identity or your specific transactions. You remain anonymous when using their service. This anonymity provides a layer of protection against individual censorship or targeted actions.</p>
+
+<p>It's a powerful concept because it allows for scenarios like trucker protests where individuals may want to donate funds to causes without fear of censorship or retribution. In a Chaumian eCash system, there's no correlation between who sent funds and who received them, providing both censorship resistance and permissioned control simultaneously. This might feel counterintuitive for Bitcoiners accustomed to transparent ledger systems, but it's a significant advantage of this model.</p>
+
+<p>ODELL:</p>
+
+<p>It's a bit hard to comprehend and wrap your head around, but once you do, it's like the head exploding Emoji. The other key aspect here is that, unlike traditional custodial systems, you have some of the personal responsibility trade-offs of self-custody systems mixed in. You need to go and do your backups yourself; you can't trust the custodian to restore your money.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, that's true. Because you hold the eCash in your wallet, if you lose your phone, the eCash is gone, and there's no way to regenerate it without knowing your private keys. So, in a very naive implementation of eCash, you lose your phone, and the money is gone, and there's nothing to do about it. However, in Cashu, you can actually write down a seed phrase, which is also the case with Fedimint. You can store this seed phrase somewhere safely, and your wallet will generate the eCash derived from that seed phrase deterministically. Then, it will get the signatures from the mint on top of that.</p>
+
+<p>In the case where you lose your phone, you can re-enter this seed phrase, and with the help of the mint database or an API provided by the mint, you can restore your entire eCash balance again. The nice thing is you still keep your privacy; the mint doesn't know what you have. In the case where you lose your phone, at least this helps you to restore it. I think it's also a necessary condition to make this technology actually useful and viable that you can also restore from a backup. This is how it works today.</p>
+
+<p>ODELL:</p>
+
+<p>Right, yeah. Bitcoiners should be familiar with storing seed phrases and making backups of private keys. Historically, it hasn't been the case with custodial systems, even custodial Bitcoin systems. So it's important that people realize this, and it's also important that as we build out these tools, we do them in different ways to make that accessible to the average user. We've seen a lot of interesting trade-off balances get implemented, including on regular Bitcoin, on-chain Bitcoin, including the recent release of&nbsp;<a href="https://bitkey.build/">BitKey from Block</a>, which does no seed phrases and makes certain trade-offs.</p>
+
+<p>Before I continue here, freaks, if you're in the live chat, you're what makes this show special. Thank you for joining us live. As always, Dispatch runs on the ride or dies that join us every week. So feel free to put any comments or questions you have, and we'll try to get to them. The live chat is at&nbsp;<a href="https://zap.stream/npub1qny3tkh0acurzla8x3zy4nhrjz5zd8l9sy9jys09umwng00manysew95gx">citadeldispatch.com/stream</a>. It is powered by&nbsp;<a href="https://nostr.com/">Nostr</a>&nbsp;and has Bitcoin integrated, but you do not need to have a Nostr account or know what Nostr is to join us there. And a huge shout out to Kieran who's building out&nbsp;<a href="https://zap.stream/">Zap Stream</a>. It's a fantastic tool.</p>
+
+<p>Calle, am I correct in that the current custodial ledger system that digital finance works on, that internet payments work on, has tons of fraud? It's like they have some of these companies have thousands of people that are dedicated to fighting fraud in their systems. Am I correct that if they were to move to a Chaumian eCash model, fraud should be greatly reduced?</p>
+
+<p>CALLE:</p>
+
+<p>Well, the also unintuitive part about Chaumian eCash transactions, because it's custodial, is that you cannot reverse them. So I'm not sure what you exactly mean by fraud prevention because it involves fraud detection and also not reversing money but insurance. In a Chaumian eCash system, if you make a transaction, it cannot be reversed anymore. That is the same as censorship resistance; it's just a different way of looking at it. In case of fraud, that means the transaction couldn't be reversed. But most with fraud prevention these days, the reaction to that is usually not to reverse the transaction either.</p>
+
+<p>If you send out money on the Swift system, it is very hard to reverse it as far as I know because the next payee could have received the funds already. What you usually have are insurances, so these systems just assume a certain level of fraud, and everyone pays for the insurance via fees essentially, and that's how you get refunded your defrauded amounts usually, in my experience, in these classical systems.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, in America we have a lot of chargebacks; this wouldn't have chargebacks.</p>
+
+<p>CALLE:</p>
+
+<p>Well, yeah, this wouldn't have chargebacks. So in a case where you imagine PayPal, for example, in a case where they detect fraud, they could just simply delete the entry from the database that says that I paid you and it was a fraud transaction. That would be very easy to do. But in the case of Chaumian eCash, when I pay you, you are paid, and there's no way to reverse that. The only thing that the mint can do is remove the coin from the double spend list, which means I can double spend it later. So they would obviously not do that, and that's the only thing that they can do.</p>
+
+<p>But I want to say, and this is important to understand, is that reversibility of a transaction means that it's not censorship resistant. You cannot reverse a Bitcoin transaction, which is why it's censorship resistant. There are also other conditions that you need for censorship resistance, but this is one of those necessary conditions. And that also makes eCash therefore censorship resistant because, you know, after the fact, if you paid it, it cannot be reversed.</p>
+
+<p>ODELL:</p>
+
+<p>I see someone in the comments mentioning that a lot of normies probably will use this with just iCloud backups, which is, for an example, with Phoenix wallet right now. With Phoenix on iOS, you can simply enable iCloud backups and never interact with the seed. Obviously, that comes with its own tradeoffs and there's some trust in Apple. But if you do it right, you can at least encrypt it at rest while it's in iCloud. So that will probably be one way that people handle a lot of these backups. Calle, so one of the cool things about eCash or one of the cool things that Bitcoin-powered eCash enables is something that is not unique to eCash; it's true with, I think, any custodial system going forward, is this idea of the Lightning Network as almost a glue between the mints. How do you think about that?</p>
+
+<p>CALLE:</p>
+
+<p>This is absolutely necessary for me, for my own personal journey here. It is absolutely necessary that I went over Lightning before, so I was working on many different Lightning projects before I started focusing my time more on eCash. The reason for that, why you could say eCash needs Bitcoin, but you could make it more specific and say eCash also needs Lightning, and I'm very convinced of that because Lightning is just the fastest way to settle Bitcoin, permission-less and trustlessly, period. So it's not completely trustless to 99.999% or something, and you still have some risks that you won't be able to punish your counterparty in time if you don't get into the block, and so on and so forth. These are all the Lightning things, but without Lightning, using eCash would be absurdly hard and the user experience would be really bad because you don't want to wait 20 minutes or sometimes an hour or pay exorbitant fees to peg in an eCash when using an on-chain transaction. And this is just going to get worse in the future.</p>
+
+<p>So building these dedicated systems, whether it's a Chaumian eCash Mint or whether it's a Liquid sidechain or whether it's maybe an ARC service provider in the future, these will all talk Lightning. And I'm very sure about that because Lightning is the Bitcoin native and simple kind of simple way to do very fast settlement. And this can be a non-custodial system like ARC, it can also be a custodial system like with Wallet of Satoshi, and they all talk to each other because of Lightning. I know that we have a lot of bearish sentiment around Lightning these days, and to be honest, I really don't get it. It feels a bit like as if people just follow narratives and not the thing itself, especially the technical folks. They should, you know, for the technical folks, nothing has changed. It is still the same Lightning as two years ago. The only thing that has changed is that fees are a little bit higher than before or significantly higher than before, depends on when, but nothing else. So Lightning keeps working the same way. It is as fast and more reliable than ever before.</p>
+
+<p>For me, Lightning works better than ever except for the high environment where you really get wrecked when you have forced closes. So in that sense, technically nothing has changed; the narrative is shifting a lot, and it seems like most people follow the narrative, and let's say okay, that's fine, you can do that. But the narrative seems to have been implying very much two years ago, apparently, that Bitcoin will scale to the billions or Lightning will scale to the billions and everyone will have a channel and be happy, and that's the end of the story. And I don't know anyone who was saying that two years ago, but it feels like people kind of have bad feelings towards some people who might have said or who might have spread this kind of narrative.</p>
+
+<p>It seems like, at least, you know what we can be sure of, I think, well, not sure of anything, anything can happen, but with a lot of confidence, I can say that Lightning will remain as the primary settlement layer for Bitcoin subsystems. And this is a generic way of saying that maybe Lightning will not be in every living room or on every phone because, you know, basic math was still also true two years ago. Everyone knew, I think even the&nbsp;<a href="https://lightning.network/lightning-network-paper.pdf">Thaddeus Dryja paper</a>&nbsp;itself gives a calculation of how many channels you can open in Lightning, so it was literally clear from day Zero, but now we are here today, Lightning, it will at least continue to exist in a larger form as a settlement layer between the systems.</p>
+
+<p>ODELL:</p>
+
+<p>I think there were plenty of non-technical people that were selling the narrative that Lightning is just a Magic Bullet, and I think there were a lot of technical people that had gotten complacent and just thought we were going to be in a low fee environment forever on-chain. I don't think there's many technical people right now that are saying Lightning is a failure or Lightning is dead necessarily. I think that is like a little bit—I'm not accusing you of making a straw man, but I've heard people essentially straw man that line of thinking. I think it's the realization that self-custody Lightning has trade-offs, right?</p>
+
+<p>For self-custody Lightning, I think I've been very consistent with this, but self-custody Lightning has trade-offs because of its lack of trust, its trust minimization, and censorship resistance. And it has found extreme product-market fit as an interoperable payment protocol between large custodians, and it will continue to excel in that use case. But the jury is out on whether or not, like the Phoenix model, it's something that really has any kind of real user base, right? I mean, they've found pretty good niche success. Right now, they're the most successful self-custody Lightning wallet on the market, I believe, without knowing their exact numbers. But will they ever even scratch the surface of the numbers of Chaumian eCash wallets or whatever custodial tech comes next? Probably not</p>
+
+<p>CALLE:</p>
+
+<p>Well, I want to keep briefing on that if you allow because Lightning is extremely cool for eCash itself, not only because it is the fast settlement layer between eCash mints; that is one thing. The other thing is that you can peg in and peg out very fast as a user. So you just make a thousand satoshi payment with Lightning; it takes one and a half seconds maybe, and then you have the eCash and you can transact with it. But we're essentially going all in with Cashu. We're focusing a lot on interoperability with the Lightning Network itself. So we adopted multiple experiments and ways that we're going to develop the protocol based on Lightning. One thing I've just recently shown that it works is multisource and eventually also I want to do multi-destination payments using Lightning, but in an atomic way. So what does that mean?</p>
+
+<p>In a Cashu wallet, you basically have multiple balances on multiple mints. So the idea is just to make that sure that for everyone listening here, the idea is not that there will be one big Cashu mint that everyone uses; that will be insane. But the idea is that it's very easy to run a Cashu mint for your specific service. So it could be your wallet that you built as a company, it could be a website where you offer services, let's say web streaming or something where you want to do payments. And it makes it very easy to run a mint for that specific service. As I said, most wallets today, and you can check it out, are interoperable. They all allow you to have multiple balances on multiple mints. And that if you have smaller balances on multiple mints, that also means that your individual risk of getting rugged can be minimized. Such that, even if one of those 10 mints that you have in your wallet runs away with the Bitcoin, you might lose at maximum, let's say, 20 bucks or 50 bucks or 10 bucks, or whatever your threshold is there.</p>
+
+<p>So you can have balances on many different mints. And now comes a cool part why this is, why Lightning really rocks because you cannot do the same thing with anything that I know is you can as a Cashu user instruct multiple mints at the same time to pay one single Lightning invoice. The way this works is through multipath payments. This is something that we've been using in Lightning for a long time. You have one sender, so it's your Lightning wallet and one receiver, this is the destination Lightning node. Multipath payments basically span out from you and then they converge again at the destination.</p>
+
+<p>So you can imagine something that expands and then contracts again at the destination. This is how most people thought of multipath payments. What you can do with a system like Cashu, where you have many different custodians all in the same wallet, which means they all have their own Lightning node, is you can compose partial Lightning payments from all of them to pay a single invoice. So imagine that you have 10 bucks on 10 mints each, you have 100 bucks in total, and you want to pay an invoice that is worth 80 bucks. You couldn't pay this invoice with any balance of a single mint. Previously you would have to use the Lightning Network to send money from one mint to another and then accumulate enough so that you can actually pay this 80 buck invoice.</p>
+
+<p>What you can soon do and already demonstrate that this works is initiate this single payment from eight different sources. So all of them pay 10 bucks to the destination, and only if the destination got all the different parts, the different HTLCs that originated from these different Lightning notes, then the payment clears, and the Lightning payment is successful, and your mints basically say now the payment has gone through. This is insane and this hasn't been really done before. I don't think that there is much precedent in how you can optimize this even further, and I believe, when we go down this path, there is a lot to explore there, such as following&nbsp;<a href="https://github.com/renepickhardt">René Pickard's</a>&nbsp;work on payment reliability and mint cost flow. René Pickard does some awesome mathematics on the Lightning Network, and in figuring out the reasons for payment failures in Lightning. This has all to do with connectivity and liquidity distribution on the Lightning Network.</p>
+
+<p>His research shows that a substantial part of failed payments in Lightning are due to the sending and receiving ends of the route and not for the intermediate steps. The first and last hops are where the liquidity is in a bottleneck, and that's where most payments fail. So that means if you can build a system where you can initiate a payment from many different sources, you completely solve this payment reliability issue because everyone from your mints will be able to pay, let's say, 2,000 sats, right? It's a tiny payment, but they all add up to one big payment. So that's one thing. And if you do the same thing with the destination, you can pay from one node to multiple Cashu mints, from one Lightning payment to multiple Cashu Mints, you can really go all in with this idea.</p>
+
+<p>You improve reliability of Lightning payments to probably to something really high. I don't want to say a number here, but it should be substantially higher than normal Lightning payments theoretically speaking. Also, how do you track this? Imagine you do one single payment, and it looks almost like Coinjoin on Lightning; you have multiple sources to multiple destinations. It could be a single payment called to multiple payments in one single request. In terms of privacy, this is just insane. Almost no one knows what's happening anymore, basically.</p>
+
+<p>ODELL:</p>
+
+<p>I don't think it's possible to overstate how badass that is. One key aspect there too, is that when you're talking about these mints, they're using a Lightning Gateway, and that Lightning Gateway is basically the provider of Lightning liquidity for the entire mint. So that's a professional Lightning operator as well, right? It's not just some Bitcoiner that has decided that he wants to try his hand on Lightning as a hobby or as a side thing; it's someone that's actually managing liquidity for the mint and is doing it to accrue transaction fees. So they're actually doing it in a professional way, and they're doing it almost as a full-time job.</p>
+
+<p>CALLE:</p>
+
+<p>Exactly, this is one thing I'm extremely bullish on. I think this really has legs, and it's such an improvement that it will very much certainly exist. Another thing I want to mention is that in Cashu, we have HTLC (<a href="https://bitcoinops.org/en/topics/htlc/">Hash Time Locked Contract</a>) eCash tokens. That means we can make eCash that is a hash time lock contract. That again means I can give you an eCash token worth a thousand satoshis, and you can only spend it if you know the pre-image of a hash, like in Lightning, or after a timeout. I can spend it again with this simple HTLC eCash.</p>
+
+<p>ODELL:</p>
+
+<p>I was just going to simplify it. Basically, it means that if the lightning payment fails, they don't get your eCash.</p>
+
+<p>CALLE:</p>
+
+<p>Not yet. So, we haven't coupled the eCash to the Lightning payment yet. Right now, we're only eCash. So this is an eCash payment that can only be unlocked with a certain pre-image to a hash or after a time lock. Now, as you said correctly, you can couple this with Lightning. So you can couple the HTLC, the eCash HTLC, to a Lightning HTLC. And with that, you can make atomic eCash-to-Lightning payments or Lightning-to-eCash payments. That means, you know, if anyone would offer a Lightning node and has some eCash from this certain mint, they could provide a service for everyone else to make lightning payments for them. And you don't have to trust this person, you just have to trust the mint that you're using.</p>
+
+<p>You don't have to trust the other user that gives you this lightning capability. That's one thing. The other thing is that you could improve the lightning Network directly by introducing eCash mints into the payment route itself. So this is also something that is possible and kind of not so crazy to build, you can extend a Lightning route. So imagine you want to send a lightning payment from A to Z, and it has to go through intermediate hops in between. The end of this route could be two users using the same eCash mint. And if they don't have a Lightning channel between them, they can still interact, they can still forward this lightning HTLC and hop it over to eCash, forward it to the receiver. And only if the receiver really received it, then this whole back propagation of the pre-image like we know in lightning can be initiated.</p>
+
+<p>With this, you can directly improve lightning by introducing some custodian risk, but you don't have to introduce risk or trust among the users. And with that, you can simulate non-existent lightning channels basically. That would be insane. You can connect everyone to everyone if you have 1,000 users in a Cashu mint. That's similar to a custodial, but perfectly private thousand to a thousand Lightning channel, something like a multiparty. It could take the role of a multiparty channel. Also, there is "atomic coupling," so that you cannot actually get rugged if the lightning payment fails or if the eCash payment fails.</p>
+
+<p>ODELL:</p>
+
+<p>It's so impressive. I mean, this is another thing that wasn't possible with Chaumian eCash before Bitcoin and Lightning existed, right? This idea of trust-minimized payments between mints or between banks.</p>
+
+<p>CALLE:</p>
+
+<p>Well, it cannot be trust-minimized if you don't have the settlement layer that is untrusted, right? This is what the Lightning Network does for the mints. If in terms of contracts running on a custodian, I think it would have been possible before, but no one really considered that because it's kind of stupid to have a smart contract with Coinbase or something. You could say, "Hey Coinbase, can I pay from my balance after I give you the pre-image to this hash?" And then they say yes or no, or something like that. You could do that technically speaking, but it's so stupid that no one does it. But in the case of eCash, you actually have bearer tokens that can hold the smart contract, and it allows you to do these interactions with other users. Everything that we build basically is for the fact that users don't have to trust other users; you just have to put your trust in the mint, obviously, so that they don't run away with everyone's money. It allows everyone else to engage in these contracts or relationships that are private and scriptable without the mint really knowing what's happening.</p>
+
+<p>ODELL:</p>
+
+<p>Even from a perspective where you put eCash on the side, for instance, an example that I always go back to is CashApp and Venmo. They have been around for a decade, and you couldn't easily send payments from a&nbsp;<a href="https://cash.app/">CashApp</a>&nbsp;user to a Venmo user until they both could send and receive Bitcoin. And then, at that point, you were able to do it.</p>
+
+<p>CALLE:</p>
+
+<p>That's a perfect example of what Bitcoin does. Exactly, that's a perfect example.</p>
+
+<p>ODELL:</p>
+
+<p>It's the glue. So, I see a question here, but before I get to this question, we keep talking about trust, right? Trust is core to this whole movement, and specifically minimizing trust. I think a good perspective that people should have here is, you know, humanity, the way we've always scaled, is trust. That's the default. That's how our governments have worked, that's how our banking system has worked, that's how everything has worked. That's because trust is simply the easiest way to efficiently scale a system among a bunch of people.</p>
+
+<p>What Freedom Tech provides, what Bitcoin provides, what Chaumian eCash provides, what Nostr provides, is the ability for us to do these things in a more trust-minimized way and try to reduce trust wherever we can. It doesn't necessarily have the promise of completely eliminating trust. Hopefully, eventually, we could get to a point where it's practically eliminated from everything in our daily lives, but the default throughout humanity has always been trust. It's a long task and a hard task to try and minimize that trust wherever possible.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, we have to be cautious not to get too philosophical here.</p>
+
+<p>ODELL:</p>
+
+<p>Did I just go philosophy?</p>
+
+<p>CALLE:</p>
+
+<p>Is this going to become a&nbsp;<a href="https://www.urbandictionary.com/define.php?term=thinkboi">Think Boi</a>&nbsp;podcast? But, yeah, when you really want to get into the details of this question, I think it's fascinating because you can trust Bitcoin, so you don't have to trust anyone else. That's at least how it feels to me. The reason why I trust Bitcoin is because I understand how it works. Before I understood how it works, I didn't trust Bitcoin either. So, at the point where your brain has an "aha" moment, now I see why it works the way it works, that's where you can get rid of the trust and be more confident in the mathematics of Bitcoin. But how do you know you won't ever be able to completely get rid of all the trust in your life? Even in the most utopian, the most imaginative utopia, not everyone will be a computer scientist who can understand exactly how the hardware works with which you use Bitcoin. There are so many points to this question that, of course, I think our goal is to minimize trust in every possible way. But at the same time, it's never going to be completely possible to minimize trust completely, to get rid of trust completely.</p>
+
+<p>ODELL:</p>
+
+<p>Right. I have a question specifically targeted at me saying, "For Odell, do you believe that Cashu protocol design, which allows mints to be easily set up by individuals, is more vulnerable to regulatory scrutiny compared to a Federated eCash mint model?" I would just quickly state here that I don't think it's unique to either protocol. It's important that in both cases, it's incredibly easy for people to launch new mints, whether that's Fedimint or Cashu, because the more mints we have, the more competition there is, the less centralization there is.</p>
+
+<p>Whenever you have centralization, we were talking philosophically on trust, like the big issue when you start to scale systems based on trust is you do have inherent centralization. And as that centralization comes into the system, you have someone who you can put a gun to their head, you have someone you can pressure, you have someone who could get corrupted or get greedy. And as a result, that's where these systems tend to fail. So I'm not going to speak for Calle, and I'm curious on his opinion here, but as far as I'm concerned, like as many mints as possible, people should be able to just spin them up relatively easily. They should all be competing with each other on the free market, and that goes for both Fedimint and for Cashu.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, this is also how I see it. It's extremely important to make it easy to set up indeed, but we should not understate the complexity of such a task. Your grandma should not run a Cashu mint and will probably never run a Cashu Mint, and that's also not the idea. But I want to still add to that. There's this one point that the listener made, the question is when you have many of these mints, how susceptible are they to regulation or coercion or something, and that's one thing. But I also believe that you can have a perfectly legitimate business running a Cashu mint for one specific application. This is also worth improving. It might also be a very significant improvement. I'm going to make something up right now, imagine Amazon would run an eCash mint just for their stuff.</p>
+
+<p>ODELL:</p>
+
+<p>Have you been talking to Bezos? Is this Insider information?</p>
+
+<p>CALLE:</p>
+
+<p>This is free Alpha for everyone listening here but okay, maybe I'm not sure if Amazon is the best example. Okay, let's imagine Amazon would use a Chaumian eCash system for their internal payment system. It is just for Amazon users, you only pay for articles, and you could even remove the ability to send eCash from user to user, just use it for payments for the products. Even if you would do that, and I believe from a regulatory perspective, this is way more trivial. It's not e-money, it's just a kind of a voucher or balance system, like a gift card system for your internal thing.</p>
+
+<p>But you vastly improve the privacy of the users at the same time. So, I think eCash is not only subversive, it is also subversive obviously because it's Freedom Tech, and Freedom Tech is always subversive, and there will always be friction in putting this out there because the powers that be won't like the new thing, that's always the case. Even when you really boil it down, to a safe system that you cannot abuse and so on and so forth, it's still worth pursuing because it adds an incredible level of privacy, even if you don't have an open money system like World Bank or something.</p>
+
+<p>ODELL:</p>
+
+<p>Let's unpack this for a second. First of all, when I said Amazon is great, I meant it's a great example. They have alot of questionable practices and Bezos can go fuck himself. But, why, in your opinion, would someone like Amazon switch from their existing gift… I mean, Amazon gift cards right now are almost treated like a currency. I mean, if you do like P2P Bitcoin no-KYC, a lot of people will use Amazon gift cards as the fiat side of the transaction because you can just buy pretty much anything you want and get it shipped anywhere in the world. Why would Amazon… What would be the advantage to Amazon, specifically to Amazon? Like, you're sitting in a boardroom with Jeff Bezos, and you're pitching him on the next greatest tech for gift cards, and that's eCash. Like, why would he do that?</p>
+
+<p>CALLE:</p>
+
+<p>Well, first of all, gift cards are very similar to eCash already, except that they are not blinded, so they do not preserve privacy. You can improve the privacy of all the users at the same time. Obviously, it's not clear whether Amazon would want that or not; it depends on their goals for their users and whether they value that. But what it also allows you to do, and I think this is where eCash has a specific advantage over classical custodianship and ledger-based custodianship, is that it's very lightweight software to run. So running a full-fledged custodian with the whole database stuff is also a full-time job, whereas for eCash, it's very simple; you just keep track of the double spend, and that's basically it. It is very lightweight to run.</p>
+
+<p>Another very cool thing is payment speed. With eCash, you can pay faster than anything I know using a very cool trick that we also use in Cashu call Pay to Public Key. This allows you to make payments on the order of several small milliseconds. You could, with eCash in a close environment, build payment streaming systems that are as efficient as nothing ever before.</p>
+
+<p>So imagine, let's not take Amazon, but let's take YouTube, a video streaming service, and now they want to charge for their service, and they want to do it very granularly, so they want you to pay every second, or they even want you to pay 25 times a second for every single video frame. What you can do is, with Pay to Pub Key in Cashu, we have scriptable eCash; you can lock the eCash to a public key, and this works very similarly to a Bitcoin transaction.</p>
+
+<p>Imagine you create eCash that is locked to the service provider's public key, and I can do that in my client; I just press one button and then lock a bunch of eCash and keep sending that eCash with every single HTTP request. You can literally put it into the HTTP request and send the money with the request to the service provider, and the service provider just looks at the eCash and sees that it's locked to its public key and knows in that millisecond that the payment is complete. It doesn't need this other round trip to the mint to know that it has not been double-spent.</p>
+
+<p>So just to sum it up, with Pay to Pub Key eCash, you can prevent double-spending even if the receiver is offline. So not only the sender, but even in the case where the receiver is offline, the sender needs to be online to lock it once, but you can make an offline receiver receive eCash without double-spending risk, and that's just insane. You have to wrap your head around that. But that also means that you can receive payments in milliseconds. If I were to shine eCash to you via laser beam or something, you would receive it, look at the public key, payment is complete, so you don't need the round trip. And with this, you can build payment systems that can do hundreds or thousands of payments a second between two users.</p>
+
+<p>ODELL:</p>
+
+<p>I'm sold! If I was running YouTube I would integrate it today.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, this is very cool. There are so many different things that you can do, and we're only scratching the surface. Recently, I saw someone who implemented a proof of concept of a file upload service based on Cashu. It's a closed system again, you don't have money transmitter risk, blah blah blah. It's a simple website with an eCash mint, and you want to enable users to upload files to that website, and you want payments in return. So, let's say you want to charge the user 200 satoshis for an upload. In the most basic case, what you would do without eCash is you put a Lightning QR code there, then the user pays the Lightning invoice, and then you allow the upload, right? The problem is the service provider knows which invoice is correlated to which upload, so it could figure out later that this payment was from someone they don't like, so they're going to delete your file or something like that. There is no privacy in that sense; that payment can be linked to file upload.</p>
+
+<p>Now, this person made this proof of concept of a Cashu-based upload page where you essentially just visit the site. The experience looks exactly the same for the user; you see a lightning invoice. Now, you pay the lightning invoice, and what happens in the background is that the payment gets converted to eCash. Now, the eCash lives in your browser, and then when you upload a file, you attach eCash to the upload. And what you have done with that is you have decoupled the initial payment, the lightning payment, from the actual thing that you want to charge for, which is the upload. So, you can introduce privacy without introducing any regulatory risk into a system. You just decouple the payment from the actual action and build closed systems, even if they don't need to be open, that are essentially just better in almost every way than what you can do without.</p>
+
+<p>ODELL:</p>
+
+<p>Well, when you're sending on Lightning, you have pretty good privacy guarantees. It's the receiving that is more difficult. And then also, on the receiving side, it just sucks that you always have to be online and have inbound liquidity. So I think the fact that you can receive offline in a trust-minimized way is pretty groundbreaking.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, it's true. The sender's privacy for Lightning is great, but the receiver's is not so much. But in this case, it's the service provider, so we don't care about their privacy. The only thing that you can build with this is you pay once and you upload once. You cannot build anything where you pay once and upload 10 times. This is not possible without tracking the payment or having an account-based system.</p>
+
+<p>ODELL:</p>
+
+<p>Oh, I see what you're saying. If you were using lightning payments, you could easily track that he uploaded these 10 videos. But if you used eCash in this scenario, then all 10 of those videos are independent.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, exactly. So essentially, you decouple, as I said, the payment from the actual action that you're charging for.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, that's badass. Okay, I am incredibly bullish. What else do you want to talk about? I know I'm the host.</p>
+
+<p>CALLE:</p>
+
+<p>Lets talk about Nostr.</p>
+
+<p>ODELL:</p>
+
+<p>You want to talk about Nostr? I've been told I talk too much about Nostr. Why do you still use Twitter?</p>
+
+<p>CALLE:</p>
+
+<p>Why? I use Twitter because I have to, and I use Nostr because I want to, that's my simple answer to that.</p>
+
+<p>ODELL:</p>
+
+<p>I like that delineation. I would say you don't have "fuck you money" until you don't have to use Twitter.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, exactly. So, let's talk about Nostr for a second because I'm incredibly bullish on Nostr as well. Maybe it's not growing fast enough for some people, but I really don't care about that too much. I'm on Twitter because of Bitcoin, and many of the Bitcoiners are on Nostr now, but it's not everyone, it's not enough.</p>
+
+<p>ODELL:</p>
+
+<p>We have most of the ride or dies on Nostr at least.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, the ride or dies are all here on Nostr. So, in the context of Cashu, Nostr was really something like a godsend. Both projects started to emerge around the same time. For eCash, you need a transport medium to send the money. It's not like I do an HTTP call to my PayPal server and then the payment is complete. If I want to make an eCash payment, I have to take the eCash and send it to you somehow. So, how do I send it to you? One way of doing that is with a QR code. I can send it to you via my phone screen and your phone camera.</p>
+
+<p>But if I want to do it completely digitally, I need some kind of system for identities and also message transmission rails. For me, as a Nostr Meta Think Boi, Nostr is an identity system like a web of trust coupled with the rails to send data to these identities. It sounds complicated the way I said it, but what I actually mean is that on Nostr, you know that I am I, and you know my public key. There could be an imposter, but it's very hard to really pretend to be me if I also have a main account.</p>
+
+<p>So, there is a way to figure out who is who, and this is very powerful. This sounds a little bit trivial, but it's actually very powerful because the only alternative that I know of is PGP, and PGP is really old school; no one likes it. Using Nostr, if I would want to encrypt a message to Odell, I don't have to talk to Odell, I literally just go to Nostr, get your public key, encrypt a message to that public key, and then I can post it on Twitter. It doesn't matter because you're the only one who can decrypt it, and that's the magic of Nostr. I don't have to post it on Twitter; I can also post it on Nostr. That's the second part; you can also transmit the data to that person.</p>
+
+<p>ODELL:</p>
+
+<p>Exactly, you can use it to send me a message like, "Yo, here's a message."</p>
+
+<p>CALLE:</p>
+
+<p>Exactly, so I can send you the message, the encrypted message. This is what a Nostr DM is. I can directly send you an encrypted message to your public key, and you will be able to read it. That's what you need for a payment system to work. We have identities, we have the data rails so to speak, and with eCash wallets you will see this. Every Cashu wallet has some sort of a Nostr ability today. You just add your public key or your private key. In some other wallets, you see all your friends there, and with a click of a button, you can just send eCash to them.</p>
+
+<p>All you need to do is take some data from your eCash wallet and send it over DM to your Nostr contact. The next time they open their wallet, it will be connected to their Nostr keys, and then they immediately see the eCash pop up and end up in their wallet. So you basically use Nostr for identity, for data transmission, and also for storage of the data. You don't need to be online; the Nostr relay, the 15 relays that I could send this message to, could keep it for you until you come back again. When the relays vanish, not everything is lost because the sender also has a copy of that money.</p>
+
+<p>ODELL:</p>
+
+<p>So that's he can rebroadcast.</p>
+
+<p>CALLE:</p>
+
+<p>Yes they can rebroadcast.</p>
+
+<p>ODELL:</p>
+
+<p>This goes back to your earlier comment, this idea of pinning it to a Pub Key so the receiver can be offline.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, so I can do that. You know, I can also do a Pay to Public Key Nut to your Nostr key, and that's where we get into what's going to happen with Nostr and Cashu because ultimately what we really want to do is to have Zaps that are eCash, eCash Zaps, because it would be so much nicer and easier to work with as a developer as well. If I know your public key on Nostr and you make a post, I can take my eCash and I can lock it to your public key, and I can just comment it to that note that you posted. I can literally slap the money at your post, and everyone else can see that there are 200 satoshis locked to Odell's Pub Key. They come from Calle or from a random sender, and the token cannot be double spent by anyone except for Odell. So I can literally render 200 sats as a Zap below that post.</p>
+
+<p>This should be invisible to the user, the whole eCash posting thing, but you could essentially build something where you just click a Zap and instead of sending a Lightning payment, it sends locked eCash to that note, and then everyone else can see that locked eCash on the note and render the Zap. That's something that we're working towards. It involves that users need to also announce which mints they use so you won't be able to send me just some crap money from a crap mint. I want my Zaps from a list of these 10 mints or something.</p>
+
+<p>ODELL:</p>
+
+<p>I mean, you could send it from a crap mint or just from many mints, and then as long as my eCash wallet supports as many mints as I want and they can make multi-part payments, does it really matter?</p>
+
+<p>CALLE:</p>
+
+<p>Yes, so in a sense you're right. Obviously, you can receive eCash from any mint, even from the crap mints. But you don't know whether it's backed or not. So, anyone can just spin up a mint without any Bitcoin backing.</p>
+
+<p>ODELL:</p>
+
+<p>This is what you have been doing.</p>
+
+<p>CALLE:</p>
+
+<p>I am doing that for test nuts.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, this kind of just blows your mind. Like, we barely even scratch the surface.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, this is just the work of a handful of people who started working on this. I'm extremely bullish on the future of this because it really feels like David Chaum messed up majorly in the 1990s, unfortunately. It feels very much like we're rediscovering this old thing but with all the concepts of today. Even if we had done eCash in the '90s, it wouldn't have been nearly as cool because there weren't HTLC's, there was no locking and atomic payments, there was no Nostr, there were no smartphones where you could store it in your wallet, and so on. It almost feels like everything is waiting for this moment, especially now that Bitcoin has come about. I think without Bitcoin, eCash really makes no sense, not much sense at all.</p>
+
+<p>ODELL:</p>
+
+<p>It was too early, but it's all coming together now. On the Nostr topic, I mean, web of trust, right? This is something we say lightly, but it's something that CypherPunks have been working on for decades now. It's not an easy task, especially bootstrapping a brand new web of trust, which is why I think the social media component of Nostr is so pivotal to the whole thing. We're essentially bootstrapping this web of trust with shit-posts, which people love. People don't love transacting PGP key pairs just to communicate with people, but with shit-posting, people will wake up in the morning to Zap a meme on the web of trust thing. I mean, I think there's really good potential on ratings of mints. What do you think about that, like a Nostr-powered marketplace that's like "Odell thinks that this is a pretty reputable mint", or "<a href="https://njump.me/npub1jk9h2jsa8hjmtm9qlcca942473gnyhuynz5rmgve0dlu6hpeazxqc3lqz7">SerSleepy</a>&nbsp;thinks this is a pretty reputable mint", and weighing those, and mixing and matching them, and trying to choose which mints you want to trust?</p>
+
+<p>CALLE:</p>
+
+<p>Well, there you go, you already spelled it out. Someone is literally working on exactly that right now for Cashu mints, and it uses Nostr. It's an index that has different Cashu mints, and all the users that you trust, your friends, you will see. For example, you could see your friends recommending that mint, and if you think enough people have said this mint is safe, I've been using it for this and that amount of time, then you can also use it. This helps first of all with mint discovery for people who are looking for a mint that they can use, and then it increases the trust if you know that this mint is already used by your friends.</p>
+
+<p>At the same time, it's also a deterrence for mints doing nasty stuff because your reputation is up there, and everyone can comment on it, and you'll lose business if you're a business looking for users. So I'm very bullish on the web of trust idea behind Nostr. I really think it's undervalued, and it's also the thing that makes Cashu wallets so nice to use, because it would be terrible if I would have to add all the different keys of my friends into the wallet first before I can interact with them, they're all there. Press a button, and you know the eCash goes to the correct recipient. That's pretty powerful.</p>
+
+<p>ODELL:</p>
+
+<p>Freedom Venmo!</p>
+
+<p>CALLE:</p>
+
+<p>Freedom Venmo!</p>
+
+<p>ODELL:</p>
+
+<p>It also goes back to what you were saying earlier about receiving from which mints you want to receive from. Obviously, it's not very user-friendly if a user has to open their app and decide which mints they trust. But you could see an easy default setting being,. If my friends have said that these are decent mints, then I will accept anything from the mints my friends like, or something like that.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, absolutely. We wouldn't have been able to do this like two years ago. This is just crazy because Nostr wasn't there. I mean, it was there, but no one cared about it. But it's crazy that you couldn't have done this like, I don't know, it would have been MRC or something, you know? What is the network that we could have used to do such a thing? Now it's very easy to build. Even you enter your NPUB and you could immediately see what your friends recommend.</p>
+
+<p>ODELL:</p>
+
+<p>My thoughts on Nostr or key-pair security are that it's quite robust. I'm still surprised that I haven't had my NSEC compromised.</p>
+
+<p>CALLE:</p>
+
+<p>Absolutely, I feel the same. I must admit that I haven't used my NSEC very securely, as I've entered it multiple times into various apps already. I'm very cautious about that, to be honest, or at least I expect it to happen at some point. Two things come to my mind here. First of all, I would love to be able to rotate my keys, and everyone just knows that I did. I would literally do it immediately right now if the clients could show that Calle has rotated his keys—don't follow this key anymore, now follow this key. If this could be automated, that would be great.</p>
+
+<p>ODELL:</p>
+
+<p>Yes,&nbsp;<a href="https://njump.me/npub1l2vyh47mk2p0qlsku7hg0vn29faehy9hy34ygaclpn66ukqp3afqutajft">Pablo&nbsp;</a>does have a proposal for that, along with an actual MVP out.</p>
+
+<p>CALLE:</p>
+
+<p>I'm losing track of all the different proposals for Nostr.</p>
+
+<p>ODELL:</p>
+
+<p>Fair enough. Pablo has a graceful way of doing it; it's simply one way only. So, you can't go back and use the old key. But basically, with your current key, you sign a note that lists all your future keys. Then, whenever a note goes out from the existing key that says, "Now I'm rotating relays," clients have to enforce it. I think that's the stumbling block – not having that support yet.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, it's all completely client-side in a sense, right? You can invent keys at any moment. The hard part is showing that it's still you and making the clients all kind of respect the same policy, I guess. But there's also&nbsp;<a href="https://nsecbunker.com/">NSEC Bunker</a>, which is also, I think,, Pablo's creation. Which feels like half of Nostr is, but NSEC Bunker I'm super bullish on that, since it's available in the browser. I think it's called&nbsp;<a href="https://nsec.app/">nsec.app</a>?</p>
+
+<p>ODELL:</p>
+
+<p>Nsec.app is someone else's project.</p>
+
+<p>CALLE:</p>
+
+<p>Yes, it's someone else's project, but it leverages NSEC Bunker, and it's just a browser tab that does the NSEC Bunker thing for you. Which means you can use it on any device as long as there's a browser tab open; it can sign your stuff from that browser tab. I really like that idea; it's a very good approach because it uses what you already have. So, anyone who's interested in that should check it out at nsec.app.</p>
+
+<p>ODELL:</p>
+
+<p>I'm a little bit at a loss for words. Do you consider eCash a scaling solution for Bitcoin?</p>
+
+<p>CALLE:</p>
+
+<p>Thank you for asking this question. I really appreciate that you do. To make it very clear to everyone, eCash is not a scaling solution to Bitcoin. I heard you guys discussed this on a previous Rip, and people were saying that it was also marketed as such. If anyone markets eCash as a scaling solution for Bitcoin, then they're full of it, and you should not listen to them. Nothing is a scaling solution for Bitcoin that does not preserve self-custody or sovereignty in a sense that we know it. We need to be extremely pedantic with these definitions, not because it's fun to be pedantic, but because people will get wrecked if we are not. We need to be super clear and speak only in capitalized letters about this. Nothing is a layer of Bitcoin that doesn't allow unilateral exit. This is a very strong condition, but I think it's a very appropriate thing. So, that means the only scaling solutions to Bitcoin today are Lightning and&nbsp;<a href="https://github.com/commerceblock/mercury/blob/master/doc/statechains.md">Mercury Statechains</a>.</p>
+
+<p>In a sense, these are the only two non-custodial solutions that allow unilateral exit. Nothing that doesn't give you unilateral exit is a scaling technology for Bitcoin. I don't know why people mix these things up. They say, "Sometimes scaling also means the number of people using Bitcoin." Some scaling also means the number of people having the legal right to own Bitcoin because they have it on their Coinbase account or something like that. You should say to all these people, "No, you're wrong. This is not scaling. You just make up new words." Scaling means technical scaling, and technical scaling means preserving the properties that you need to still keep the thing right. eCash is not Bitcoin; it just works with Bitcoin. It might mean that more people touch Bitcoin in a sense; they use Bitcoin as an underlying asset that backs their eCash, but it doesn't scale Bitcoin at all.</p>
+
+<p>ODELL:</p>
+
+<p>First of all, if you mean something, you should say it in CAPS. But you mentioned Statechains. The way Mercury Statechains implementation works, my understanding is it's like "self-custody." If the custodian, if the Statechain operator, is malicious and is the counterparty in your swaps, they can rug you. Yes, so it's different than the Lightning trust model. The Lightning trust model is truly trust-minimized in a way that we don't see with any of these other projects really.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, absolutely. In Lightning, you don't have the service provider; it's just you and me, channel partners, that's it. In Statechains, you have a service provider. I think it works with a multisig, so you go into multisig with the service provider, and you also have the option to exit if the service provider denies your service.</p>
+
+<p>ODELL:</p>
+
+<p>Yeah, but the service providers could be two of the three if they're malicious.</p>
+
+<p>CALLE:</p>
+
+<p>Yes. The service provider can always collude with the previous owner.</p>
+
+<p>ODELL:</p>
+
+<p>Or, they could be the previous owner.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, exactly. It's the same thing. So, you have some level of trust there, but it still fulfills, I think, my very pedantic definition of it: that you can unilaterally exit. So, if you haven't been defrauded and if they didn't collude with anyone, you can always exit without asking them for permission. That's a very important thing, and none of these systems that we have been talking about today, whether it's Fedimint or Liquid or Cashu or Sovereign Sidechain and whatever all these different things that sometimes call themselves layers of Bitcoin sometimes call themselves scaling for Bitcoin, none of them allow you to exit unilaterally. They are just services that use Bitcoin to give you a service, and that's the way to think about it.</p>
+
+<p>ODELL:</p>
+
+<p>It always comes back down to permission and trust. Yes, live life without permission. So, the ETFs are not a scaling solution.</p>
+
+<p>CALLE:</p>
+
+<p>I think Coinbase is the ultimate scaling solution because Coinbase is also the custodian for the ETFs, right? For most of them, I think everything runs on Coinbase.</p>
+
+<p>ODELL:</p>
+
+<p>There's a bunch of them that are trying to do your multi-mint approach, kind of like there is a Titanic model where where you have multi-custodian but not multi-sig. For example Coinbase holds 20%, Gemini holds 20%, Bitgo holds 20%, that's going to be the next evolution of ETF Tech, I've been told. That's some free Alpha for you freaks. So, do you consider Chaumian eCash a Layer 2 then?</p>
+
+<p>CALLE:</p>
+
+<p>Fuck no, it's a Layer 69!</p>
+
+<p>ODELL:</p>
+
+<p>So, you think the Layers go hand in hand with the idea of unilateral exit and no permission. You can't be a Layer if it requires permission.</p>
+
+<p>CALLE:</p>
+
+<p>What is a Layer if it can mean anything? If it can be anything, the word literally means nothing, except for a vague understanding of what a layer is, and this is what most people like to use it for. I'm just saying, don't do that. Be pedantic. Words have meanings. Back in the day words still meant something, that's what we can have back. Just be precise on what you call a layer and what you call a scaling solution. Again, I'm not saying this because I want to be a smart ass and be pedantic just for the sake of it. I think this is very important for us in messaging how we communicate Bitcoin to the people. It's to be very, very, very clear about these trade-offs that they're making. Calling something a layer often, you know, when people do that, it feels like an&nbsp;<a href="https://en.wikipedia.org/wiki/Affinity_fraud">affinity scam</a>&nbsp;to me, so I would be very cautious.</p>
+
+<p>ODELL:</p>
+
+<p>There are affinity scams that use that terminology, there are many.</p>
+
+<p>CALLE:</p>
+
+<p>How many "L2" scam projects have been popping up just in the last couple of weeks? Because they've found BitVM or Ordinals or can put a script here and there and just make up these weird concepts calling them L2s. These are all scammer projects that abuse the fact that we've been so imprecise with these words.</p>
+
+<p>ODELL:</p>
+
+<p>I got a lot of shit for calling this out a few years ago, but Stacks started a lot of this nonsense, and now the bullshit L2's are upon us. I'm glad I quit Twitter before it all happened, so I don't have to deal with it for the most part. What else are you excited about in Bitcoin? I'm sure you spend 25 hours of the day focused on Cashu and Nostr, but what else are you watching?</p>
+
+<p>CALLE:</p>
+
+<p>I'm watching multiple things actually. Like, I'm very excited about whether we're going to have a soft fork or not. I'm not emotionally invested in it anymore as much as I was like half a year ago or something, where I was really trying to make up my mind on it. But now I'm just very curious about where it will end up, which Op codes it will be, whether we will get any update or not. So that's something I'm curiously watching. But there's been this nice post that I always think of. Um, I think it was Justin Moon from Fedimint who posted it. It was someone sitting on the edge of a beautiful mountain looking into the horizon, and the title said, ‘When your project doesn't depend on a change in Bitcoin.' So for us people who have projects that just work with Bitcoin as it is, it's just smooth sailing, and everything is an improvement. And what I find is that many projects or even companies out there built on a promise of a fork. I'm looking forward to the bloodbath already.</p>
+
+<p>ODELL:</p>
+
+<p>If you're waiting for a Bitcoin protocol change, you're just going to have a really bad time. To me, that's always been what's so exciting about eCash and Fedimint, is that it doesn't require protocol change. That is a key value prop of Bitcoin, that it's incredibly difficult to change by default. Shitcoiners have always had that backwards. They say Bitcoin's too slow, Bitcoin doesn't have the latest features, Bitcoin's not innovating. At the end of the day, you can't have the base of a global decentralized censorship-resistant permission-less financial network change easily because then you can just change it maliciously and then we're all fucked. Are you excited about a specific software? Should I put you on the spot? Is there one you want? Is there one that you're sitting at the mountainside while you're happy that you're not waiting for it, that you're dreaming about?</p>
+
+<p>At the end of the day, you can't have the base of a global decentralized censorship-resistant permission-less financial network change easily, because then you can just change it maliciously, and then we're all fucked.</p>
+
+<p>Matt Odell</p>
+
+<p>CALLE:</p>
+
+<p>I don't know. I think I've looked at most of them. I haven't reviewed any of them in the same detail, but I really like OP_CTV (<a href="https://bitcoindocs.org/notes/newbie-guide-to-check-template-verify-op-ctv">OP_CHECKTEMPLATEVERIFY</a>), I must say. I like keeping it super simple, just enable with very clear objectives in what it does, and I would go for that. I see many people getting excited about OP_CAT specifically also because it's super, super simple. But I don't have any opinion about that myself.</p>
+
+<p>ODELL:</p>
+
+<p>Well, my basic understanding of OP_CAT is that it has the appearance of being really simple, but the knock-on effects can be quite hard to comprehend.</p>
+
+<p>CALLE:</p>
+
+<p>That's why any soft fork needs years of discussion because we figure out the risks sometimes only a little bit later. It feels to me that OP_CTV had this time already. It's been around for long enough, it has been talked about long enough, and I think we kind of can see what it can do.</p>
+
+<p>ODELL:</p>
+
+<p>Does it help what you're building at all?</p>
+
+<p>CALLE:</p>
+
+<p>No, not really. I don't bank on it at all. But I think you could build more trust-minimized mints with a covenant where the mint can basically be forced to pay out to a specific address in case of a withdrawal. But, to be honest, there are more high-tech stuff that I haven't talked about today, and you know I'll be talking shortly when I can publicize it a little bit more, but my ideas for the future, they are based on Lightning and marrying Lightning closer to eCash. I like to work with stuff that is already there and improve the things that we already use. I think there is enough to do already.</p>
+
+<p>ODELL:</p>
+
+<p>We're aligned on that one. Also, while I have you here, you want to talk a little bit about the conspiracy that the only reason there's hype around eCash is because of VC's? What are your thoughts?</p>
+
+<p>CALLE:</p>
+
+<p>My thoughts about that are that they're definitely wrong. Cashu itself is an unfunded project, and we're poor, so if you want to donate to the project, you can go to&nbsp;<a href="https://cashu.space/">cashu.space</a>&nbsp;and leave a donation or just write to me because we have no VC funding at all. So, there's no one who can tell us what to do and what not to do. Most people who are working on Cashu do it literally in their free time. There are a couple of people who have funding from several organizations like OpenSats, but apart from that, we're not funded. I know Fedimint has big fat funding, so in that case, I think the comment is maybe appropriate. I don't know how much influence it has on their product, but it will definitely have some influence on every product decision if you have a VC; it will be there.</p>
+
+<p>So, again, if you want to support Cashu, please do. We need support, and this project also lives from individual donations, so please hit me up. It's very much needed, and if you can support Cashu financially, please check it out. We definitely need more developers working on stuff. It's an easy protocol to understand; we have spelled out the entire thing. You can read a couple of documents and then write your entire Cashu implementation from scratch if you like, or just experiment with running a mint. Download Nutshell, use some very safe limits that you cannot rug too much or break things too much, so you can keep the balance low and so forth and run a Cashu mint and just play around with it and offer a service to other crazy freaks out there. Or, you will find other ways to contribute to Cashu. If you know how to design websites or make a FAQ nice and so on and so forth, please, we're looking for contributors, so just hit me up on all the different channels that you know about.</p>
+
+<p>ODELL:</p>
+
+<p>I just want to say I think it's really cool that you made it a priority to protocolize it as quickly as possible. You just let the hive mind come in and really contribute in a big way, rather than keeping it more of a siloed project.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, this is a practical decision. First of all, it's very cool. Protocols are speech and they cannot be controlled. If I make a Cashu app in one implementation, it could be shut down by the App Store, but you can't do the same thing with a protocol. A protocol is an idea, and it has proven itself multiple times already because multiple people have implemented it. So, it's an idea that you can also spell out. The other thing is the synergy that it allows, to first of all build an open-source community of people who are part of this, who design the protocol all together. It allows much faster building if you can put all the information into a single repository. Many people can work on their own things at the same time and know that they're interoperable. It just increases the speed of development by a lot and makes the whole thing much more resilient. Hopefully, the thing can also just exist without me existing. So that's my kind of personal midterm goal, to make all of this also independent of my own existence. Right now, I'm keeping all the different threads together, but the goal is to have this as a completely independent system that can just survive without me. And that only works if you're a protocol.</p>
+
+<p>ODELL:</p>
+
+<p>One day you'll actually be able to quit Twitter.</p>
+
+<p>CALLE:</p>
+
+<p>Yeah, we'll see.</p>
+
+<p>ODELL:</p>
+
+<p>Huge shout out to Calle for all his work and for joining us here. I just want to thank the freaks once again for supporting the show. Dispatch is purely audience-funded; we have no ads or sponsors. It is supported by the freaks who either Zap us Sats in the Nostr-powered live stream or send sats via Podcasting 2.0 apps like&nbsp;<a href="https://www.fountain.fm/">Fountain</a>&nbsp;podcasts and Breeze. I know that Sats are scarce, and if you don't have Sats to spare, you can always support the show by simply subscribing in your favorite podcast app, sharing it with friends and family, leaving a review. It really does help; it goes a long way and keeps me coming back week in, week out. Thank you all.</p>
+
+<p>I also shipped today to the podcast feed a 10-minute Bitcoin Basics, like just a 101 that I did in late 2022. It still held up really well. That was just off the cuff 10 minutes "Why Bitcoin" in front of a live audience at Bitcoin Park. I'm curious about feedback on that. I think maybe I'll start shipping little 10-minute clips, just-me, on different topics of Bitcoin so you can share it with friends and family. I just think there's a lot of good information out there, but there's a lot of bad information out there, and just having easy, shareable clips that are very concise but still comprehensive can be helpful. So I'm curious on feedback there. Calle, thanks so much for joining us; this was awesome. Do you have any final thoughts?</p>
+
+<p>CALLE:</p>
+
+<p>Well, thank you for having me. This was a great conversation. And as a final thought to the listeners out there, I already gave you a lecture on how you can support Cashu. Please just support open-source software in general, like this thing that we're building here. Bitcoin as a project depends on contributions from everyone. If you're a programmer and you haven't contributed to Bitcoin yet, then what are you waiting for? You should definitely look into projects that you're already using, start filing bugs and fix them, and just look for something where you can contribute because there are so many people out there who have the skills but just haven't taken the step yet.</p>
+
+<p>If you want to contribute to Cashu and be a Cashu developer or work on your own small app, it takes you a couple of hours to get into the protocol. I will hold your hand, so&nbsp;<a href="https://njump.me/npub12rv5lskctqxxs2c8rf2zlzc7xx3qpvzs3w4etgemauy9thegr43sf485vg">just DM me</a>, and I'll show you where you can help. And again, if you want to contribute or support the Cashu project, you can go to cashu.space; you'll find the link how to contribute there. So, thanks for having me, Odell; this was a great conversation.</p>
+
+<p>ODELL:</p>
+
+<p>Thank you, sir. What do you think about us making this more of a recurring thing, you know, every few months check in on Cashu and how everything's developing? Would you be cool with that?</p>
+
+<p>CALLE:</p>
+
+<p>Oh yeah, I'd be very cool with that. And with the speed that things are going, I think we'll have something to talk about at every occasion.</p>
+
+<p>ODELL:</p>
+
+<p>Awesome, I look forward to it. I appreciate you. Hopefully, I'll see you in person again soon. And thank you, freaks, for joining us. Cheers.</p>
+
+</div>
