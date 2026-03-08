@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Nostr Wire — Clean Feed&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--bg: #08080a;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--surface: #121215;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--surface-hover: #1a1a1f;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border: #232328;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border-hover: #35353d;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text: #ededf0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-secondary: #7c7c85;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent: #8b5cf6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--accent-dim: rgba(139,92,246,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--like: #f43f5e;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--repost: #22c55e;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--zap: #f59e0b;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--reply: #60a5fa;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>html { scroll-behavior: smooth; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-font-smoothing: antialiased;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-moz-osx-font-smoothing: grayscale;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Header ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: sticky;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 100;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(8,8,10,0.82);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(24px) saturate(180%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-backdrop-filter: blur(24px) saturate(180%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-inner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 640px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 14px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 19px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: -0.4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.logo-mark {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 34px; height: 34px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #8b5cf6, #d946ef);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid; place-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 17px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 12px rgba(139,92,246,0.35);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tabs {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--surface);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 6px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12.5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 1px 8px rgba(139,92,246,0.35);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab:hover:not(.active) { color: var(--text); background: var(--surface-hover); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Feed Container ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>main {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 640px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px 16px 60px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Loading State ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.state-message {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 80px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.spinner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 36px; height: 36px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 3px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top-color: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: spin 0.7s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes spin { to { transform: rotate(360deg); } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.retry-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--accent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.15s, box-shadow 0.15s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.retry-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(139,92,246,0.4); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Post Card ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--surface);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.2s, transform 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: slideUp 0.35s ease both;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: default;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post:hover { border-color: var(--border-hover); transform: translateY(-1px); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes slideUp {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from { opacity: 0; transform: translateY(14px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to <span class="Apple-converted-space">  </span>{ opacity: 1; transform: translateY(0); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Header row */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-head {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 11px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.avatar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 42px; height: 42px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.avatar-ph {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 42px; height: 42px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, var(--accent), #d946ef);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid; place-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700; font-size: 16px; color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.author { flex: 1; min-width: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.author-name {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 650; font-size: 14.5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap; overflow: hidden; text-overflow: ellipsis;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.author-nip05 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12.5px; color: var(--text-secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: nowrap; overflow: hidden; text-overflow: ellipsis;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-time { color: var(--text-secondary); font-size: 12.5px; flex-shrink: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Content */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 14.8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.7;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>word-break: break-word;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-wrap: break-word;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>white-space: pre-wrap;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-body a { color: var(--accent); text-decoration: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-body a:hover { text-decoration: underline; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-body .ht { color: var(--accent); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-body .mention { color: var(--accent); font-weight: 500; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Media */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.media-wrap {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.media-wrap img, .media-wrap video {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-height: 520px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Stats bar */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.post-stats {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12.5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.18s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st:hover { background: var(--surface-hover); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st.s-reply:hover <span class="Apple-converted-space">  </span>{ color: var(--reply); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st.s-repost:hover<span class="Apple-converted-space">  </span>{ color: var(--repost); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st.s-like:hover<span class="Apple-converted-space">    </span>{ color: var(--like); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st.s-zap:hover <span class="Apple-converted-space">    </span>{ color: var(--zap); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.st svg { width: 17px; height: 17px; flex-shrink: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Link to original */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.open-link {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-secondary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.18s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.open-link:hover { background: var(--surface-hover); color: var(--text); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Responsive ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 520px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.header-inner { flex-direction: column; gap: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>main { padding: 10px 10px 40px; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.post { padding: 16px; border-radius: 13px; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.tabs { width: 100%; justify-content: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* ── Scrollbar ── */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar { width: 7px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-track { background: transparent; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo-mark"&gt;⚡&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Nostr Wire&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab active" data-feed="trending"&gt;Trending&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab" data-feed="latest"&gt;Latest&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="tab" data-feed="mostzapped"&gt;Most Zapped&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;main id="feed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="state-message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span&gt;Connecting to Nostr relays…&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">// ── Config ──</p>
+<p class="p1">const PRIMAL_WS = 'wss://cache2.primal.net/v1';</p>
+<p class="p2"><br></p>
+<p class="p1">const FEED_METHODS = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>trending: <span class="Apple-converted-space">  </span>'explore_global_trending_24h',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>latest: <span class="Apple-converted-space">    </span>'explore_global_latest',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>mostzapped: 'explore_global_mostzapped_4h'</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">const FALLBACK_RELAYS = [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>'wss://relay.damus.io',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>'wss://nos.lol',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>'wss://relay.nostr.band'</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">// ── State ──</p>
+<p class="p1">let profiles<span class="Apple-converted-space">  </span>= {};</p>
+<p class="p1">let notes <span class="Apple-converted-space">    </span>= [];</p>
+<p class="p1">let noteStats = {};</p>
+<p class="p1">let ws<span class="Apple-converted-space">        </span>= null;</p>
+<p class="p1">let activeFeed = 'trending';</p>
+<p class="p1">let connectTimeout = null;</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Tab Clicks ──</p>
+<p class="p1">document.querySelectorAll('.tab').forEach(btn =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (btn.dataset.feed === activeFeed) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.tab').forEach(b =&gt; b.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>activeFeed = btn.dataset.feed;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fetchFeed();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Helpers ──</p>
+<p class="p1">function timeAgo(ts) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const d = Math.floor(Date.now()/1000) - ts;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (d &lt; 60)<span class="Apple-converted-space">    </span>return d + 's';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (d &lt; 3600)<span class="Apple-converted-space">  </span>return Math.floor(d/60) + 'm';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (d &lt; 86400) return Math.floor(d/3600) + 'h';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (d &lt; 604800) return Math.floor(d/86400) + 'd';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return new Date(ts*1000).toLocaleDateString();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function fmtN(n) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!n) return '0';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n &gt;= 1e6) return (n/1e6).toFixed(1)+'M';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (n &gt;= 1e3) return (n/1e3).toFixed(1)+'K';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return String(n);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function esc(s) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return s.replace(/&amp;/g,'&amp;amp;').replace(/&lt;/g,'&amp;lt;').replace(/&gt;/g,'&amp;gt;');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">const IMG_RE = /(https?:\/\/\S+\.(?:jpe?g|png|gif|webp|svg|avif)(?:\?\S*)?)/gi;</p>
+<p class="p1">const VID_RE = /(https?:\/\/\S+\.(?:mp4|webm|mov)(?:\?\S*)?)/gi;</p>
+<p class="p2"><br></p>
+<p class="p1">function extractMedia(text) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const imgs = [...text.matchAll(IMG_RE)].map(m =&gt; m[1]);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const vids = [...text.matchAll(VID_RE)].map(m =&gt; m[1]);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return { imgs, vids };</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function renderContent(raw) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let text = raw.replace(IMG_RE, '').replace(VID_RE, '').trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text = esc(text);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// URLs → links</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text = text.replace(/(https?:\/\/[^\s&lt;]+)/g, '&lt;a href="$1" target="_blank" rel="noopener noreferrer"&gt;$1&lt;/a&gt;');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Hashtags</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text = text.replace(/#(\w{1,60})/g, '&lt;span class="ht"&gt;#$1&lt;/span&gt;');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// nostr: mentions</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text = text.replace(/nostr:(npub|nprofile|note|nevent|naddr)1[a-z0-9]{10,}/gi, (match) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const short = match.slice(0,20) + '…';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `&lt;span class="mention"&gt;${short}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>return text;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── SVG Icons ──</p>
+<p class="p1">const ICONS = {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>reply:<span class="Apple-converted-space">  </span>'&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/&gt;&lt;/svg&gt;',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>repost: '&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="17 1 21 5 17 9"/&gt;&lt;path d="M3 11V9a4 4 0 0 1 4-4h14"/&gt;&lt;polyline points="7 23 3 19 7 15"/&gt;&lt;path d="M21 13v2a4 4 0 0 1-4 4H3"/&gt;&lt;/svg&gt;',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>like: <span class="Apple-converted-space">  </span>'&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/&gt;&lt;/svg&gt;',</p>
+<p class="p1"><span class="Apple-converted-space">    </span>zap:<span class="Apple-converted-space">    </span>'&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/&gt;&lt;/svg&gt;'</p>
+<p class="p1">};</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Render the feed ──</p>
+<p class="p1">function renderFeed() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!notes.length) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('feed').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="state-message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="font-size:42px"&gt;📡&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;No posts found — the relay may be temporarily unavailable.&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="retry-btn" onclick="fetchFeed()"&gt;Retry&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>notes.sort((a,b) =&gt; b.created_at - a.created_at);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const html = notes.map((note, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const p = profiles[note.pubkey] || {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const s = noteStats[note.id] || {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const name = p.display_name || p.displayName || p.name || note.pubkey.slice(0,10)+'…';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const handle = p.nip05 || (p.name ? '@'+p.name : note.pubkey.slice(0,16)+'…');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const { imgs, vids } = extractMedia(note.content);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const body = renderContent(note.content);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const avatarEl = p.picture</p>
+<p class="p1"><span class="Apple-converted-space">            </span>? `&lt;img class="avatar" src="${esc(p.picture)}" alt="" loading="lazy"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>onerror="this.outerHTML='&lt;div class=\\'avatar-ph\\'&gt;${esc(name[0]||'?').toUpperCase()}&lt;/div&gt;'"&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>: `&lt;div class="avatar-ph"&gt;${esc(name[0]||'?').toUpperCase()}&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const media = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>...imgs.map(u =&gt; `&lt;div class="media-wrap"&gt;&lt;img src="${u}" alt="" loading="lazy" onerror="this.parentElement.remove()"&gt;&lt;/div&gt;`),</p>
+<p class="p1"><span class="Apple-converted-space">            </span>...vids.map(u =&gt; `&lt;div class="media-wrap"&gt;&lt;video src="${u}" controls preload="metadata"&gt;&lt;/video&gt;&lt;/div&gt;`)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>].join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>return `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="post" style="animation-delay:${i*40}ms"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="post-head"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>${avatarEl}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="author"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="author-name"&gt;${esc(name)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="author-nip05"&gt;${esc(handle)}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="post-time"&gt;${timeAgo(note.created_at)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>${body ? `&lt;div class="post-body"&gt;${body}&lt;/div&gt;` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>${media}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="post-stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="st s-reply"&gt;${ICONS.reply}${fmtN(s.replies)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="st s-repost"&gt;${ICONS.repost}${fmtN(s.reposts)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="st s-like"&gt;${ICONS.like}${fmtN(s.likes)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="st s-zap"&gt;${ICONS.zap}${fmtN(s.satszapped||s.zaps)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a class="open-link" href="https://primal.net/e/${note.id}" target="_blank" rel="noopener"&gt;open ↗&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('feed').innerHTML = html;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Primal Cache API ──</p>
+<p class="p1">function fetchFeed() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Reset</p>
+<p class="p1"><span class="Apple-converted-space">    </span>profiles = {}; notes = []; noteStats = {};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('feed').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="state-message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Loading ${activeFeed} feed…&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (ws) { try { ws.close(); } catch(_){} }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clearTimeout(connectTimeout);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ws = new WebSocket(PRIMAL_WS);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Timeout → fallback to raw relays</p>
+<p class="p1"><span class="Apple-converted-space">    </span>connectTimeout = setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (ws.readyState !== WebSocket.OPEN) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ws.close();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>fetchFromRelays();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}, 6000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ws.onopen = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>clearTimeout(connectTimeout);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ws.send(JSON.stringify([</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"REQ",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"wire",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ "cache": [ FEED_METHODS[activeFeed], { "limit": 40 } ] }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ws.onmessage = (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let msg;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try { msg = JSON.parse(e.data); } catch(_) { return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (msg[0] === 'EVENT' &amp;&amp; msg[2]) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ev = msg[2];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch (ev.kind) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 0: // profile</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>try { profiles[ev.pubkey] = JSON.parse(ev.content); } catch(_){}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 1:<span class="Apple-converted-space">  </span>// text note</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 30023: // long-form</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>notes.push(ev);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>default:</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Primal stats kinds (10000100+)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (ev.kind &gt;= 10000100 &amp;&amp; ev.kind &lt;= 10000200) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>const d = JSON.parse(ev.content);</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>if (d.event_id) noteStats[d.event_id] = d;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>} catch(_){}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (msg[0] === 'EOSE') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderFeed();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try { ws.close(); } catch(_){}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>ws.onerror = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>clearTimeout(connectTimeout);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fetchFromRelays();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// ── Fallback: Direct Relay Fetch ──</p>
+<p class="p1">function fetchFromRelays() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>profiles = {}; notes = []; noteStats = {};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('feed').innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="state-message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Trying direct relay connection…&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let connected = false;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (const url of FALLBACK_RELAYS) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const r = new WebSocket(url);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>r.onopen = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (connected) { r.close(); return; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>connected = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Fetch recent notes</p>
+<p class="p1"><span class="Apple-converted-space">            </span>r.send(JSON.stringify(["REQ","fb",{"kinds":[1],"limit":40}]));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pubkeys = new Set();</p>
+</body>
+</html>
