@@ -266,7 +266,7 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
           <DialogDescription className="text-center">
             {invoice
               ? 'Scan or copy the invoice to pay with any Lightning wallet.'
-              : `Send sats to ${LIGHTNING_ADDRESS}`}
+              : 'Choose an amount and optionally add a memo.'}
           </DialogDescription>
         </DialogHeader>
 
