@@ -23,7 +23,7 @@ const LINKS = {
   odellSite: 'https://odell.xyz',
   citadelArcade: 'https://citadelarcade.com',
   signal: 'https://signal.me/#eu/HRcP2L9gdya44jj6lvfVtPNsyxRdiTsK2GIuAEFuciFj9ePBDHtKAbtGpyEffTsU',
-  logo: 'https://citadeldispatch.com/CITADELDISPATCH.jpeg',
+  logo: '/citadeldispatch-hero.jpeg',
 };
 
 function HeroSection() {
