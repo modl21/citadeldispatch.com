@@ -1,0 +1,17 @@
+{
+  "name": "citadel-dispatch-worker",
+  "main": "worker.ts",
+  "compatibility_date": "2024-03-19",
+  "kv_namespaces": [
+    {
+      "binding": "SUPPORTERS_KV",
+      "id": "supporters_cache"
+    }
+  ],
+  "triggers": {
+    "crons": ["*/10 * * * *"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

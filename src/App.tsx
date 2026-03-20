@@ -38,6 +38,7 @@ const defaultConfig: AppConfig = {
       { url: 'wss://relay.ditto.pub', read: true, write: true },
       { url: 'wss://relay.primal.net', read: true, write: true },
       { url: 'wss://relay.damus.io', read: true, write: true },
+      { url: 'wss://antiprimal.net', read: true, write: true },
     ],
     updatedAt: 0,
   },
