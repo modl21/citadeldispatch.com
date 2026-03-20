@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { DonateDialog } from '@/components/DonateDialog';
+import { TopSupporters } from '@/components/TopSupporters';
 
 const LINKS = {
   podcast: 'https://serve.podhome.fm/CitadelDispatch',
@@ -57,7 +58,7 @@ function HeroSection() {
             <img
               src={LINKS.logo}
               alt="Citadel Dispatch"
-              className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl object-cover border border-amber-500/20 shadow-2xl"
+              className="relative w-40 h-40 sm:w-52 sm:h-52 rounded-2xl object-cover border border-amber-500/20 shadow-2xl"
             />
           </div>
         </div>
@@ -299,6 +300,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       <HeroSection />
+      <TopSupporters />
       <DonateSection />
       <Footer />
     </div>
