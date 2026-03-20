@@ -75,11 +75,16 @@ function HeroSection() {
         </p>
 
         {/* Audience funded badge */}
-        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in-up animation-delay-300">
+        <div className="flex items-center justify-center gap-2 mb-4 animate-fade-in-up animation-delay-300">
           <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium">
             <Shield className="w-4 h-4" />
             <span>Audience Funded &mdash; No Ads, No Paywalls</span>
           </div>
+        </div>
+
+        {/* Top Supporters */}
+        <div className="mb-6 animate-fade-in-up animation-delay-400">
+          <TopSupporters />
         </div>
 
         {/* CTA Buttons */}
@@ -300,7 +305,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
       <HeroSection />
-      <TopSupporters />
       <DonateSection />
       <Footer />
     </div>

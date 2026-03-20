@@ -1,4 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { nip19, nip57 } from 'nostr-tools';
+import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { useAppContext } from '@/hooks/useAppContext';
 import {
   Bitcoin,
   Zap,
@@ -30,7 +33,8 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useToast } from '@/hooks/useToast';
 import QRCode from 'qrcode';
 
-const LIGHTNING_ADDRESS = 'odell@primal.net';
+const LIGHTNING_ADDRESS = 'citadel@primal.net';
+const RECIPIENT_PUBKEY = '7f573f55d875ce8edc528edf822949fd2ab9f9c65d914a40225663b0a697be07';
 
 const presetAmounts = [
   { amount: 1000, label: '1k', icon: Sparkle },
@@ -67,12 +71,20 @@ async function resolveLightningAddress(address: string): Promise<LNURLPayParams>
 async function fetchInvoice(
   callback: string,
   amountMsats: number,
-  comment?: string
+  comment?: string,
+  nostrEvent?: string,
+  lnurl?: string
 ): Promise<string> {
   const url = new URL(callback);
   url.searchParams.set('amount', String(amountMsats));
   if (comment) {
     url.searchParams.set('comment', comment);
+  }
+  if (nostrEvent) {
+    url.searchParams.set('nostr', nostrEvent);
+  }
+  if (lnurl) {
+    url.searchParams.set('lnurl', lnurl);
   }
 
   const res = await fetch(url.toString());
@@ -94,6 +106,7 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
   const [open, setOpen] = useState(false);
   const [amount, setAmount] = useState<number | string>(10000);
   const [memo, setMemo] = useState('');
+  const [supporterNpub, setSupporterNpub] = useState('');
   const [invoice, setInvoice] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -101,6 +114,8 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
   const [lnurlParams, setLnurlParams] = useState<LNURLPayParams | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
+  const { user } = useCurrentUser();
+  const { config } = useAppContext();
 
   // Resolve lightning address when dialog opens
   useEffect(() => {
@@ -149,6 +164,7 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
     if (!open) {
       setAmount(10000);
       setMemo('');
+      setSupporterNpub('');
       setInvoice(null);
       setCopied(false);
       setQrCodeUrl('');
@@ -200,7 +216,62 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
 
     try {
       const trimmedMemo = memo.trim() || undefined;
-      const pr = await fetchInvoice(lnurlParams.callback, amountMsats, trimmedMemo);
+
+      let zapRequestEncoded: string | undefined;
+      const lnurlEncoded = lnurlParams
+        ? nip19.nprofileEncode({ pubkey: lnurlParams.nostrPubkey ?? RECIPIENT_PUBKEY, relays: [] })
+        : undefined;
+
+      if (lnurlParams?.allowsNostr && lnurlParams.nostrPubkey) {
+        let senderPubkey = user?.pubkey;
+
+        if (!senderPubkey && supporterNpub.trim()) {
+          try {
+            const decoded = nip19.decode(supporterNpub.trim());
+            if (decoded.type === 'npub') {
+              senderPubkey = decoded.data;
+            } else {
+              throw new Error('Please enter a valid npub');
+            }
+          } catch {
+            throw new Error('Invalid npub format');
+          }
+        }
+
+        if (!senderPubkey) {
+          throw new Error('Log in or enter your npub to be shown in Top Supporters');
+        }
+
+        const relays = config.relayMetadata.relays.map((r) => r.url);
+
+        const zapRequest = nip57.makeZapRequest({
+          profile: RECIPIENT_PUBKEY,
+          amount: amountMsats,
+          relays,
+          comment: trimmedMemo ?? '',
+        });
+
+        if (user?.signer && user.pubkey === senderPubkey) {
+          const signed = await user.signer.signEvent(zapRequest);
+          zapRequestEncoded = JSON.stringify(signed);
+        } else {
+          const signedAnonymous = {
+            ...zapRequest,
+            pubkey: senderPubkey,
+            id: '',
+            sig: '',
+          };
+          zapRequestEncoded = JSON.stringify(signedAnonymous);
+        }
+      }
+
+      const pr = await fetchInvoice(
+        lnurlParams.callback,
+        amountMsats,
+        trimmedMemo,
+        zapRequestEncoded,
+        lnurlEncoded,
+      );
       setInvoice(pr);
     } catch (err) {
       console.error('Invoice error:', err);
@@ -410,6 +481,20 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
                 onChange={(e) => setMemo(e.target.value)}
                 className="resize-none border-amber-500/10 focus:border-amber-500/30"
                 rows={2}
+              />
+            </div>
+
+            {/* Supporter npub */}
+            <div className="space-y-2">
+              <Label htmlFor="supporter-npub" className="text-xs text-muted-foreground">
+                Your npub (optional, to show in Top Supporters)
+              </Label>
+              <Input
+                id="supporter-npub"
+                placeholder="npub1..."
+                value={supporterNpub}
+                onChange={(e) => setSupporterNpub(e.target.value)}
+                className="border-amber-500/10 focus:border-amber-500/30 text-xs"
               />
             </div>
 

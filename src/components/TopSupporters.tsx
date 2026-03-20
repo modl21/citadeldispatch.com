@@ -2,11 +2,9 @@ import { type NostrMetadata, NSchema as n } from '@nostrify/nostrify';
 import { useNostr } from '@nostrify/react';
 import { useQuery } from '@tanstack/react-query';
 import { useTopSupporters } from '@/hooks/useTopSupporters';
-import { DonateDialog } from '@/components/DonateDialog';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Button } from '@/components/ui/button';
-import { Zap, Bitcoin } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { nip19 } from 'nostr-tools';
 import { cn } from '@/lib/utils';
 
@@ -102,17 +100,15 @@ export function TopSupporters() {
 
   if (isLoading) {
     return (
-      <div className="max-w-2xl mx-auto px-6 py-4">
-        <div className="flex flex-col items-center gap-3">
-          <span className="text-[10px] font-semibold text-muted-foreground/50 uppercase tracking-widest">Top Supporters</span>
-          <div className="flex items-center gap-2.5">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-1 shrink-0">
-                <Skeleton className="h-7 w-7 rounded-full" />
-                <Skeleton className="h-2 w-5" />
-              </div>
-            ))}
-          </div>
+      <div className="flex flex-col items-center gap-2">
+        <span className="text-[10px] font-semibold text-muted-foreground/50 uppercase tracking-widest">Top Supporters</span>
+        <div className="flex items-center gap-2.5">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="flex flex-col items-center gap-1 shrink-0">
+              <Skeleton className="h-7 w-7 rounded-full" />
+              <Skeleton className="h-2 w-5" />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -123,30 +119,19 @@ export function TopSupporters() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-5">
-      <div className="flex flex-col items-center gap-3">
-        <span className="text-[10px] font-semibold text-muted-foreground/50 uppercase tracking-widest">
-          Top Supporters
-        </span>
-        <div className="flex items-center gap-2.5 overflow-x-auto scrollbar-hide py-1 px-0.5">
-          {supporters.map((supporter, index) => (
-            <SupporterAvatar
-              key={supporter.pubkey}
-              pubkey={supporter.pubkey}
-              totalSats={supporter.totalSats}
-              rank={index}
-            />
-          ))}
-        </div>
-        <DonateDialog>
-          <Button
-            size="sm"
-            className="rounded-full px-5 text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-black transition-all duration-300 hover:scale-105"
-          >
-            <Bitcoin className="w-3.5 h-3.5 mr-1.5" />
-            Become a Supporter
-          </Button>
-        </DonateDialog>
+    <div className="flex flex-col items-center gap-2">
+      <span className="text-[10px] font-semibold text-muted-foreground/50 uppercase tracking-widest">
+        Top Supporters
+      </span>
+      <div className="flex items-center gap-2.5 overflow-x-auto scrollbar-hide py-1 px-0.5">
+        {supporters.map((supporter, index) => (
+          <SupporterAvatar
+            key={supporter.pubkey}
+            pubkey={supporter.pubkey}
+            totalSats={supporter.totalSats}
+            rank={index}
+          />
+        ))}
       </div>
     </div>
   );
