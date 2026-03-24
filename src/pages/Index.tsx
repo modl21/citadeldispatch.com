@@ -23,6 +23,7 @@ const LINKS = {
   odellNostr: 'https://primal.net/odell',
   odellSite: 'https://odell.xyz',
   citadelArcade: 'https://citadelarcade.com',
+  citadelChat: 'https://citadel.chat',
   signal: 'https://signal.me/#eu/HRcP2L9gdya44jj6lvfVtPNsyxRdiTsK2GIuAEFuciFj9ePBDHtKAbtGpyEffTsU',
   logo: '/citadeldispatch-hero.jpeg',
 };
@@ -169,6 +170,11 @@ function QuickLinksSection() {
       label: 'Citadel Arcade',
       href: LINKS.citadelArcade,
       icon: Zap,
+    },
+    {
+      label: 'Citadel Chat',
+      href: LINKS.citadelChat,
+      icon: MessageCircle,
     },
   ];
 
