@@ -101,9 +101,8 @@ function HeroSection() {
           </DonateDialog>
           <Button
             asChild
-            variant="outline"
             size="lg"
-            className="rounded-full px-7 py-5 text-sm sm:text-base font-semibold border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50 transition-all duration-300"
+            className="rounded-full px-7 py-5 text-sm sm:text-base font-semibold bg-amber-500 hover:bg-amber-400 text-black glow-amber transition-all duration-300 hover:scale-105"
           >
             <a href={LINKS.podcast} target="_blank" rel="noopener noreferrer">
               <Podcast className="w-5 h-5 mr-2" />
