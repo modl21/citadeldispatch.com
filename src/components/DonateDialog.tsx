@@ -338,30 +338,28 @@ export function DonateDialog({ children, className }: DonateDialogProps) {
           senderPubkey = resolvedPubkey;
         }
 
-        if (!senderPubkey) {
-          throw new Error('Log in or enter your Nostr address to be shown in Top Supporters');
-        }
+        if (senderPubkey) {
+          const relays = config.relayMetadata.relays.map((r) => r.url);
 
-        const relays = config.relayMetadata.relays.map((r) => r.url);
+          const zapRequest = nip57.makeZapRequest({
+            profile: RECIPIENT_PUBKEY,
+            amount: amountMsats,
+            relays,
+            comment: trimmedMemo ?? '',
+          });
 
-        const zapRequest = nip57.makeZapRequest({
-          profile: RECIPIENT_PUBKEY,
-          amount: amountMsats,
-          relays,
-          comment: trimmedMemo ?? '',
-        });
-
-        if (user?.signer && user.pubkey === senderPubkey) {
-          const signed = await user.signer.signEvent(zapRequest);
-          zapRequestEncoded = JSON.stringify(signed);
-        } else {
-          const signedAnonymous = {
-            ...zapRequest,
-            pubkey: senderPubkey,
-            id: '',
-            sig: '',
-          };
-          zapRequestEncoded = JSON.stringify(signedAnonymous);
+          if (user?.signer && user.pubkey === senderPubkey) {
+            const signed = await user.signer.signEvent(zapRequest);
+            zapRequestEncoded = JSON.stringify(signed);
+          } else {
+            const signedAnonymous = {
+              ...zapRequest,
+              pubkey: senderPubkey,
+              id: '',
+              sig: '',
+            };
+            zapRequestEncoded = JSON.stringify(signedAnonymous);
+          }
         }
       }
 
