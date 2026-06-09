@@ -159,6 +159,7 @@ function QuickLinksSection() {
       label: 'Citadel Wire',
       href: LINKS.citadelWire,
       icon: Compass,
+      accent: true,
     },
     {
       label: 'ODELL on Nostr',
