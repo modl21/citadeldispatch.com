@@ -20,11 +20,11 @@ const SHOP_ITEMS: ShopItem[] = [
   { name: 'Citadel Navy Hat', href: 'https://pay.zaprite.com/pl_Gn13TI05re', category: 'hat', imageId: '55b76ba7-595e-46b1-a416-0e20534d780e' },
   { name: 'Citadel White Hat', href: 'https://pay.zaprite.com/pl_KyoVgy6mFM', category: 'hat', imageId: '9808ee32-1292-4ca6-9b2d-b91e58b00c72' },
   { name: 'Citadel OG Hat', href: 'https://pay.zaprite.com/pl_zNBq1JVXM1', category: 'hat', imageId: '27fa3d48-f247-4c8d-8f44-9262446cd207' },
+  { name: 'Citadel Dad Hat', href: 'https://pay.zaprite.com/pl_8gy4G5lkhn', category: 'hat', imageId: '6c52550e-54a4-48d2-bb7e-eaf195a10020' },
   { name: 'Stack Sats Hat', href: 'https://pay.zaprite.com/pl_GaQnc2RQvs', category: 'hat', imageId: 'a9177b0b-828d-4061-bdf0-c00387add815' },
   { name: 'Humble Hat — White', href: 'https://pay.zaprite.com/pl_DHkYreJPiG', category: 'hat', imageId: '2d8b02d3-55d8-4a5f-a40f-5aed448ea4bf' },
   { name: 'Humble Hat — Black', href: 'https://pay.zaprite.com/pl_IxG5qaT55t', category: 'hat', imageId: '84efb00e-08e4-445a-9cc2-9f8bc9ce5a9e' },
   { name: 'Ten31 Hat', href: 'https://pay.zaprite.com/pl_DzhQjtqHpX', category: 'hat', imageId: 'f97ff5b9-181b-4749-907e-6c02e7f08b88' },
-  { name: 'Citadel Dad Hat', href: 'https://pay.zaprite.com/pl_8gy4G5lkhn', category: 'hat', imageId: '6c52550e-54a4-48d2-bb7e-eaf195a10020' },
   { name: 'Stack Sats Shirt', href: 'https://pay.zaprite.com/pl_b9F1l7Y94G', category: 'shirt', imageId: '2f53c0f3-9a20-4982-a6b7-3d094e17cd8e' },
 ];
 
