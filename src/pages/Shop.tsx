@@ -13,7 +13,7 @@ interface ShopItem {
   name: string;
   href: string;
   category: 'hat' | 'shirt';
-  imageId?: string;
+  imageId: string;
 }
 
 const SHOP_ITEMS: ShopItem[] = [
@@ -24,8 +24,7 @@ const SHOP_ITEMS: ShopItem[] = [
   { name: 'Humble Hat — White', href: 'https://pay.zaprite.com/pl_DHkYreJPiG', category: 'hat', imageId: '2d8b02d3-55d8-4a5f-a40f-5aed448ea4bf' },
   { name: 'Humble Hat — Black', href: 'https://pay.zaprite.com/pl_IxG5qaT55t', category: 'hat', imageId: '84efb00e-08e4-445a-9cc2-9f8bc9ce5a9e' },
   { name: 'Ten31 Hat', href: 'https://pay.zaprite.com/pl_DzhQjtqHpX', category: 'hat', imageId: 'f97ff5b9-181b-4749-907e-6c02e7f08b88' },
-  { name: 'Citadel Dad Hat', href: 'https://pay.zaprite.com/pl_8gy4G5lkhn', category: 'hat' },
-  { name: 'Primal Hat', href: 'https://pay.zaprite.com/pl_jSK1rUZihp', category: 'hat' },
+  { name: 'Citadel Dad Hat', href: 'https://pay.zaprite.com/pl_8gy4G5lkhn', category: 'hat', imageId: '6c52550e-54a4-48d2-bb7e-eaf195a10020' },
   { name: 'Stack Sats Shirt', href: 'https://pay.zaprite.com/pl_b9F1l7Y94G', category: 'shirt', imageId: '2f53c0f3-9a20-4982-a6b7-3d094e17cd8e' },
 ];
 
@@ -33,8 +32,8 @@ const SIGNAL_LINK = 'https://signal.me/#eu/HRcP2L9gdya44jj6lvfVtPNsyxRdiTsK2GIuA
 
 function ProductImage({ item }: { item: ShopItem }) {
   const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(!item.imageId);
-  const src = item.imageId ? `${SUPABASE_BASE}/${item.imageId}` : undefined;
+  const [error, setError] = useState(false);
+  const src = `${SUPABASE_BASE}/${item.imageId}`;
 
   return (
     <AspectRatio ratio={1}>
